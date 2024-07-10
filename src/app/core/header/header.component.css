@@ -22,6 +22,17 @@
   margin-right: 0;
 }
 
+/* Changer la couleur des liens du menu lors du survol, sauf pour "Profil" et "Panier" */
+.nav-link.nav-spacing:not(.profile-cart-exception):hover {
+  color: #28a745 !important; /* Couleur verte pour le texte */
+}
+
+/* Changer la couleur des icônes du menu lors du survol, sauf pour "Profil" et "Panier" */
+.nav-link.nav-spacing:not(.profile-cart-exception):hover i {
+  color: #28a745; /* Couleur verte pour les icônes */
+}
+
+
 
 
 

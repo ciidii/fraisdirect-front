@@ -6,7 +6,7 @@
     </a>
 
     <!-- Bouton pour afficher/cacher le menu sur les appareils mobiles -->
-    <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -22,9 +22,8 @@
         <li class="nav-item">
           <a class="nav-link nav-spacing" href="#">Services</a>
         </li>
-
         <li class="nav-item">
-          <a [routerLink]="['/shop/product']" class="nav-link nav-spacing" >Produits</a>
+          <a [routerLink]="['/shop/product']" class="nav-link nav-spacing">Produits</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-spacing" href="#">Contacts</a>
@@ -32,20 +31,24 @@
       </ul>
 
       <!-- Champ de recherche au centre -->
-      <form class="d-flex mx-auto">
-        <input class="form-control me-2" type="search" placeholder="Recherche" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+      <form class="d-flex mx-auto search-bar-form">
+        <input class="form-control me-2 search-bar" type="search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Recherche</button>
       </form>
 
       <!-- Icônes de profil et panier -->
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">
-            <i class="bi bi-person"></i> Compte
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-spacing btn btn-outline-success profile-cart-exception" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person"></i> Profil
           </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Créer un compte</a></li>
+            <li><a class="dropdown-item" href="#">Connexion</a></li>
+          </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">
+          <a class="nav-link nav-spacing btn btn-outline-success profile-cart-exception" href="#">
             <i class="bi bi-cart"></i> Panier
           </a>
         </li>
@@ -53,4 +56,3 @@
     </div>
   </div>
 </nav>
-
