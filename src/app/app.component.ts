@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
 import {HeaderComponent} from "./core/header/header.component";
 
 @Component({
@@ -9,6 +9,13 @@ import {HeaderComponent} from "./core/header/header.component";
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'fraisdirect-frontend';
+  constructor(private router: Router) {
+
+  }
+
+  ngOnInit(): void {
+    this.router.navigateByUrl("/customer")
+  }
 }

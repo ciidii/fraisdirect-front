@@ -2,7 +2,7 @@
   <div class="container-fluid">
     <!-- Logo -->
     <a class="navbar-brand" href="#">
-      <img src="/assets/images/logofd.png" alt="Logo FraisDirect" class="logo-img">
+      <img src="/assets/images/logofd.png" alt="Logo FraisDirect" class="logo-img" [routerLink]="['/customer/']">
     </a>
 
     <!-- Bouton pour afficher/cacher le menu sur les appareils mobiles -->
@@ -13,12 +13,6 @@
     <!-- Liens de navigation principaux -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a [routerLink]="['/customer/shop']" class="nav-link nav-spacing" href="#">Accueil</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">A Propos</a>
-        </li>
         <li class="nav-item">
           <a class="nav-link nav-spacing" href="#">Services</a>
         </li>
@@ -40,8 +34,8 @@
       <!-- Icônes de profil et panier -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">
-            <i class="bi bi-person"></i> Compte
+          <a class="nav-link nav-spacing" [routerLink]="['customer/login']">
+            <i class="bi bi-person"></i> Se Connecter
           </a>
         </li>
         <li class="nav-item">
