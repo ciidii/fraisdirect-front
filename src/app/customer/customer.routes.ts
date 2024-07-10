@@ -2,7 +2,7 @@ import {RouterModule, Routes} from "@angular/router";
 import {PresentationPageComponent} from "./presentation-page/presentation-page.component";
 import {NgModule} from "@angular/core";
  const routesCuster:Routes=[
-  {path:"shop",component:PresentationPageComponent}
+  {path:"",component:PresentationPageComponent}
 ];
 
 @NgModule({
