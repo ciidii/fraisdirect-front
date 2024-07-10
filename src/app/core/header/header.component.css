@@ -1,0 +1,27 @@
+.logo-img {
+  height: 80px; /* Ajustez la hauteur selon vos besoins */
+  width: auto; /* Conserve le ratio d'aspect de l'image */
+}
+
+.navbar {
+  height: 70px; /* Définissez la hauteur fixe de la navbar pour correspondre à la hauteur du logo */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem; /* Espace entre le logo et le premier lien */
+}
+
+.nav-spacing {
+  margin-right: 15px; /* Ajustez la valeur selon vos besoins */
+}
+
+/* Optionnel : Supprimer la marge du dernier élément */
+.navbar-nav .nav-item:last-child .nav-spacing {
+  margin-right: 0;
+}
+
+
+
+
