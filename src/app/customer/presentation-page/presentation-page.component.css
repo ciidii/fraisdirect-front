@@ -1,0 +1,12 @@
+.container {
+  margin-top: 80px; /* Ajoutez une marge supérieure pour éviter que le contenu ne soit caché derrière la navbar */
+}
+
+.card {
+  margin-bottom: 20px; /* Ajoutez une marge inférieure entre les cartes */
+}
+
+.card-img-top {
+  height: 200px; /* Définissez une hauteur fixe pour les images des produits */
+  object-fit: cover; /* Maintenez le ratio d'aspect des images */
+}
