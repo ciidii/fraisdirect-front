@@ -1,12 +1,25 @@
 .container {
-  margin-top: 80px; /* Ajoutez une marge supérieure pour éviter que le contenu ne soit caché derrière la navbar */
+  margin-top: 50px; /* Ajoutez une marge supérieure pour éviter que le contenu ne soit caché derrière la navbar */
 }
 
 .card {
-  margin-bottom: 20px; /* Ajoutez une marge inférieure entre les cartes */
+  margin-bottom: 10px; /* Ajoutez une marge inférieure entre les cartes */
 }
-
-.card-img-top {
-  height: 200px; /* Définissez une hauteur fixe pour les images des produits */
-  object-fit: cover; /* Maintenez le ratio d'aspect des images */
+.fixed-height {
+  height: 200px; /* Ajustez cette valeur à la hauteur désirée */
+  object-fit: cover; /* Maintient l'aspect ratio et recadre l'image si nécessaire */
+  width: 100%;
+}
+.letext
+{
+  position:relative;
+  top: 45px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.card-img{
+  position:relative;
+  bottom: 75px;
 }

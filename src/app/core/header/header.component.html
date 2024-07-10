@@ -6,7 +6,7 @@
     </a>
 
     <!-- Bouton pour afficher/cacher le menu sur les appareils mobiles -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <button  class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">Accueil</a>
+          <a [routerLink]="['/customer/shop']" class="nav-link nav-spacing" href="#">Accueil</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-spacing" href="#">A Propos</a>
@@ -24,7 +24,7 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">Produits</a>
+          <a [routerLink]="['/shop/product']" class="nav-link nav-spacing" >Produits</a>
         </li>
         <li class="nav-item">
           <a class="nav-link nav-spacing" href="#">Contacts</a>
