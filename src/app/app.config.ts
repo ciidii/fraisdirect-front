@@ -11,6 +11,6 @@ export const  appConfig: ApplicationConfig = {
     provideRouter(routes),
     importProvidersFrom(CoreModule),
     importProvidersFrom(CustomerModule),
-    importProvidersFrom(ShopkeeperModule)
+    importProvidersFrom(ShopkeeperModule),
   ]
 };
