@@ -31,13 +31,40 @@
 .nav-link.nav-spacing:not(.profile-cart-exception):hover i {
   color: #28a745; /* Couleur verte pour les icônes */
 }
+
 /* Style pour le survol des éléments de la liste déroulante */
 .dropdown-item.dropdown-hover:hover {
   background-color: #198754; /* Change la couleur de fond au survol */
   color: white; /* Change la couleur du texte au survol */
 }
 
+/* Style pour le champ de recherche */
+.search-bar-form {
+  width: 50%; /* Ajustez la largeur selon vos besoins */
+}
 
+.search-bar {
+  border-radius: 0; /* Pour correspondre au style de Bootstrap */
+  box-shadow: none; /* Supprimer les ombres par défaut */
+}
 
+.search-bar:focus {
+  border-color: #28a745; /* Couleur verte pour la bordure en focus */
+  box-shadow: none; /* Supprimer les ombres par défaut */
+}
 
+/* Style pour le bouton de recherche */
+.btn-outline-success {
+  border-color: #28a745; /* Couleur verte pour la bordure */
+  color: #28a745; /* Couleur verte pour le texte */
+}
 
+.btn-outline-success:hover {
+  background-color: #28a745; /* Couleur verte pour le fond au survol */
+  color: white; /* Couleur blanche pour le texte au survol */
+}
+
+/* Optionnel : Ajuster la taille des icônes pour correspondre à la hauteur de la navbar */
+.navbar-nav .nav-item .nav-link i {
+  font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
+}
