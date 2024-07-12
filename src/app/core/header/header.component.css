@@ -22,19 +22,25 @@
   margin-right: 0;
 }
 
-/* Changer la couleur des liens du menu lors du survol, sauf pour "Profil" et "Panier" */
+/* Style par défaut des liens de navigation en vert */
+.nav-link.nav-spacing {
+  color: #28a745; /* Couleur verte par défaut */
+  transition: color 0.3s ease; /* Transition pour une animation fluide */
+}
+
+/* Changer la couleur des liens de navigation en blanc au survol, sauf pour "Profil" et "Panier" */
 .nav-link.nav-spacing:not(.profile-cart-exception):hover {
-  color: #28a745 !important; /* Couleur verte pour le texte */
+  color: white; /* Couleur blanche au survol */
 }
 
 /* Changer la couleur des icônes du menu lors du survol, sauf pour "Profil" et "Panier" */
 .nav-link.nav-spacing:not(.profile-cart-exception):hover i {
-  color: #28a745; /* Couleur verte pour les icônes */
+  color: white; /* Couleur blanche pour les icônes au survol */
 }
 
 /* Style pour le survol des éléments de la liste déroulante */
 .dropdown-item.dropdown-hover:hover {
-  background-color: #198754; /* Change la couleur de fond au survol */
+  background-color: #28a745; /* Change la couleur de fond au survol */
   color: white; /* Change la couleur du texte au survol */
 }
 
