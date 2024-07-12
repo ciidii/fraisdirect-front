@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {User} from "../../core/model/User";
 import {UserService} from "../../core/service/UserService";
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 
 @Component({
@@ -16,7 +17,10 @@ import {UserService} from "../../core/service/UserService";
 export class AddUserComponent implements OnInit {
   userForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private userService: UserService) {
+  constructor(private fb: FormBuilder,
+              private userService: UserService,
+              private toaster:ToastrService
+  ) {
   }
 
   passwordMatchValidator(form: FormGroup) {
@@ -28,9 +32,11 @@ export class AddUserComponent implements OnInit {
     if (this.userForm.valid) {
       const newUser: User = this.userForm.value;
       this.userService.addUser(newUser).subscribe(response => {
-        console.log('User added successfully', response);
+        if (response.status=="OK"){
+          this.toaster.success("Compter créer à succées")
+        }
       }, error => {
-        console.error('Error adding user', error);
+        this.toaster.error(error)
       });
     }
   }

@@ -1,14 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CustomerRoutes} from "./customer.routes";
+import {ToastrModule, ToastrService} from "ngx-toastr";
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule,
+    CommonModule
   ],
   exports:[CustomerRoutes]
 })
-export class CustomerModule { }
+export class CustomerModule {
+
+}
