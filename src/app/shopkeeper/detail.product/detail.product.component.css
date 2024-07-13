@@ -1,0 +1,14 @@
+.ajout{
+  position: relative;
+  left: 450px;
+  width: 50px;
+  height: 50px;
+  bottom:85px;
+}
+.retour{
+  position: relative;
+  left: 490px;
+  width: 46px;
+  height: 47px;
+  bottom:90px;
+}
