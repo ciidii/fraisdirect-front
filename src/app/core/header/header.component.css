@@ -72,5 +72,6 @@
 
 /* Optionnel : Ajuster la taille des icônes pour correspondre à la hauteur de la navbar */
 .navbar-nav .nav-item .nav-link i {
-  font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
+  font-size: 1rem; /* Ajustez la taille selon vos besoins */
 }
+
