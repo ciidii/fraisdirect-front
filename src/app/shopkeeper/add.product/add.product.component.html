@@ -1,1 +1,67 @@
-<p>add.product works!</p>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+
+      <h2 class="text-center">Ajouter un produit</h2>
+
+      <form [formGroup]="productForm" (ngSubmit)="onSubmit()" class="custom-form mx-auto">
+        <div class="form-group">
+          <label>Code du produit:</label>
+          <input type="text" class="form-control" formControlName="codeProduct">
+          <!--
+          <div *ngIf="productForm.controls['codeProduct'].invalid && (productForm.controls['codeProduct'].dirty || productForm.controls['codeProduct']?.touched)">
+            <div *ngIf="productForm.controls['codeProduct'].errors?.required">Code du produit est requis.</div>
+            <div *ngIf="productForm.controls['codeProduct'].errors?.minlength || productForm.controls['codeProduct'].errors?.maxlength">Code du produit doit avoir exactement 5 caractères.</div>
+          </div>
+          -->
+        </div>
+
+        <div class="form-group">
+          <label>Description:</label>
+          <textarea class="form-control" formControlName="description"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Prix de base:</label>
+          <input type="number" class="form-control" formControlName="basicPrice">
+          <!--
+          <div *ngIf="productForm.controls['basicPrice'].invalid && (productForm.controls['basicPrice'].dirty || productForm.controls['basicPrice'].touched)">
+            <div *ngIf="productForm.controls['basicPrice'].errors!.required">Prix de base est requis.</div>
+          </div>
+          -->
+        </div>
+
+
+        <div class="form-group">
+          <label>Statut:</label>
+          <input type="checkbox" formControlName="status">
+        </div>
+
+        <div class="form-group">
+          <label>Quantité:</label>
+          <input type="number" class="form-control" formControlName="quantity">
+        </div>
+
+        <div class="form-group">
+          <label>Sous-catégorie:</label>
+          <input type="number" class="form-control" formControlName="subCategory">
+          <!--
+          <div *ngIf="productForm.controls['subCategory']?.invalid && (productForm.controls['subCategory']?.dirty || productForm.controls['subCategory']?.touched)">
+
+            <div *ngIf="productForm.controls['subCategory']?.errors?.required">Sous-catégorie est requise.</div>
+
+          </div>
+          -->
+
+        </div>
+
+        <div class="form-group">
+          <label>Images:</label>
+          <input type="file" multiple formControlName="images">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Soumettre</button>
+      </form>
+    </div>
+  </div>
+</div>

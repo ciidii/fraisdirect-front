@@ -22,6 +22,55 @@
   margin-right: 0;
 }
 
+/* Style par défaut des liens de navigation en vert */
+.nav-link.nav-spacing {
+  color: #28a745; /* Couleur verte par défaut */
+  transition: color 0.3s ease; /* Transition pour une animation fluide */
+}
 
+/* Changer la couleur des liens de navigation en blanc au survol, sauf pour "Profil" et "Panier" */
+.nav-link.nav-spacing:not(.profile-cart-exception):hover {
+  color: white; /* Couleur blanche au survol */
+}
 
+/* Changer la couleur des icônes du menu lors du survol, sauf pour "Profil" et "Panier" */
+.nav-link.nav-spacing:not(.profile-cart-exception):hover i {
+  color: white; /* Couleur blanche pour les icônes au survol */
+}
 
+/* Style pour le survol des éléments de la liste déroulante */
+.dropdown-item.dropdown-hover:hover {
+  background-color: #28a745; /* Change la couleur de fond au survol */
+  color: white; /* Change la couleur du texte au survol */
+}
+
+/* Style pour le champ de recherche */
+.search-bar-form {
+  width: 50%; /* Ajustez la largeur selon vos besoins */
+}
+
+.search-bar {
+  border-radius: 0; /* Pour correspondre au style de Bootstrap */
+  box-shadow: none; /* Supprimer les ombres par défaut */
+}
+
+.search-bar:focus {
+  border-color: #28a745; /* Couleur verte pour la bordure en focus */
+  box-shadow: none; /* Supprimer les ombres par défaut */
+}
+
+/* Style pour le bouton de recherche */
+.btn-outline-success {
+  border-color: #28a745; /* Couleur verte pour la bordure */
+  color: #28a745; /* Couleur verte pour le texte */
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745; /* Couleur verte pour le fond au survol */
+  color: white; /* Couleur blanche pour le texte au survol */
+}
+
+/* Optionnel : Ajuster la taille des icônes pour correspondre à la hauteur de la navbar */
+.navbar-nav .nav-item .nav-link i {
+  font-size: 1.5rem; /* Ajustez la taille selon vos besoins */
+}

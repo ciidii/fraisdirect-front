@@ -1,19 +1,27 @@
 // user.service.ts
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {User} from "../model/User";
 import {ResponseEntityApi} from "../model/ResponseEntityApi";
+import {Environment} from "./environment.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  private apiUrl = 'http://localhost:8080/fraisdirect/api/v1/inscription';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private environment: Environment) { }
 
   addUser(user: User): Observable<ResponseEntityApi<User>> {
-    return this.http.post<ResponseEntityApi<User>>(this.apiUrl, user);
+    return this.http.post<ResponseEntityApi<User>>(this.environment.url+`inscription`, user);
+  }
+
+  verifyCode(code: string): Observable<ResponseEntityApi<any>> {
+    let options = {
+      headers: new HttpHeaders().set("Content-Type", "application/json"),
+      params: new HttpParams().set("code",code)
+    };
+    return this.http.post<ResponseEntityApi<any>>(this.environment.url+`activation`,{}, options);
   }
 }

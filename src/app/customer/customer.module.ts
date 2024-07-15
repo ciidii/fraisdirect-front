@@ -1,14 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {CustomerRoutes} from "./customer.routes";
-import {ToastrModule, ToastrService} from "ngx-toastr";
+import {BrowserModule} from "@angular/platform-browser";
+import {NgxPaginationModule} from "ngx-pagination";
 
 
 
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxPaginationModule
   ],
   exports:[CustomerRoutes]
 })

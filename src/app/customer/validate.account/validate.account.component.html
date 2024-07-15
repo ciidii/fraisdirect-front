@@ -1,0 +1,19 @@
+<!-- verify-code.component.html -->
+<div class="container d-flex justify-content-center align-items-center min-vh-100">
+  <div class="card p-4">
+    <h2 class="text-center mb-4">Verify Your Code</h2>
+    <form [formGroup]="verifyCodeForm" (ngSubmit)="onSubmit()" class="d-flex flex-column align-items-center">
+      <div class="d-flex justify-content-between mb-4">
+        <input type="text" maxlength="1" class="form-control input-box" formControlName="code0" (input)="moveFocus($event, 1)" />
+        <input type="text" maxlength="1" class="form-control input-box" formControlName="code1" (input)="moveFocus($event, 2)" />
+        <input type="text" maxlength="1" class="form-control input-box" formControlName="code2" (input)="moveFocus($event, 3)" />
+        <input type="text" maxlength="1" class="form-control input-box" formControlName="code3" (input)="moveFocus($event, 4)" />
+        <input type="text" maxlength="1" class="form-control input-box" formControlName="code4" (input)="moveFocus($event, 5)" />
+        <input type="text" maxlength="1" class="form-control input-box" formControlName="code5" (input)="moveFocus($event, null)" />
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="loading">Verify</button>
+      <div *ngIf="errorMessage" class="text-danger mt-3">{{ errorMessage }}</div>
+    </form>
+    <ngx-spinner></ngx-spinner>
+  </div>
+</div>

@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {User} from "../../core/model/User";
 import {UserService} from "../../core/service/UserService";
 import {ToastrModule, ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -11,15 +12,16 @@ import {ToastrModule, ToastrService} from "ngx-toastr";
   imports: [
     ReactiveFormsModule
   ],
-  templateUrl: './add.user.component.html',
-  styleUrl: './add.user.component.css'
+  templateUrl: './create.account.component.html',
+  styleUrl: './create.account.component.css'
 })
-export class AddUserComponent implements OnInit {
+export class CreateAccountComponent implements OnInit {
   userForm!: FormGroup;
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
-              private toaster:ToastrService
+              private toaster:ToastrService,
+              private router: Router
   ) {
   }
 
@@ -33,7 +35,7 @@ export class AddUserComponent implements OnInit {
       const newUser: User = this.userForm.value;
       this.userService.addUser(newUser).subscribe(response => {
         if (response.status=="OK"){
-          this.toaster.success("Compter créer à succées")
+          this.router.navigateByUrl("/customer/validate")
         }
       }, error => {
         this.toaster.error(error)
@@ -42,6 +44,7 @@ export class AddUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.toaster.success("Compter créer à succées","info")
     this.userForm = this.fb.group({
       nom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

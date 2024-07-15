@@ -1,21 +1,27 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {HttpClientModule} from "@angular/common/http";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ToastrModule} from "ngx-toastr";
-import {SpinnerComponent} from "./spinner/spinner.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {LoadingSpinnerInterceptor} from "./interceptor/loading.spinner.interceptor";
 import {NgxSpinnerModule} from "ngx-spinner";
 
 
 @NgModule({
   declarations: [],
-  imports: [
+  exports: [
     CommonModule,
+    ToastrModule,
+    BrowserAnimationsModule
+  ],
+  imports: [
+    BrowserModule,
     HttpClientModule,
     NgxSpinnerModule
   ],
-  exports:[
-    CommonModule,
-    ToastrModule,
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: LoadingSpinnerInterceptor, multi: true }
   ]
 })
 export class CoreModule { }

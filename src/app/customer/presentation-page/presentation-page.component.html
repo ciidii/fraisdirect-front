@@ -1,7 +1,6 @@
-<br>
 <div class="container">
   <div class="row">
-    <h1 class="text-center my-4">Bienvenue sur FraisDirect</h1>
+    <h1 class="text-center para">Bienvenue sur FraisDirect</h1>
     <div class="col-md-12">
       <div class="card mb-4 border-0">
         <div class="row no-gutters">
@@ -13,159 +12,87 @@
               <p class="card-text mt-3 letext">
                 Votre plateforme en ligne dédiée à la valorisation des produits locaux et à la mise en avant des vendeurs de légumes de votre région.
                 Notre mission est de créer un lien direct entre les producteurs locaux et les consommateurs, en offrant une visibilité accrue aux producteurs
-                et en facilitant l'accès à des produits frais et de qualité pour les consommateurs.</p>
+                et en facilitant l'accès à des produits frais et de qualité pour les consommateurs.
+              </p>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <!-- Exemple de carte produit -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/pomme.jpg" class="card-img-top fixed-height" alt="Pomme">
-        <div class="card-body">
-          <h5 class="card-title">Pommes</h5>
-          <p class="card-text">Des pommes fraîches et croquantes, parfaites pour une collation saine.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Catégories</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li *ngFor="let category of categories" class="nav-item">
+            <a class="nav-link active" aria-current="page" (click)="getSubCategories(category.categoryID)">{{category.nameCategory}}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <div *ngFor="let sc of subcategories" class="row">
+    <h3>{{sc.nameSubCategory}}</h3>
+    <div class="col-md-1 d-flex align-items-center justify-content-center">
+      <button class="btn-arrow btn-arrow-left" (click)="previousPage(sc.subCategoryID)" [disabled]="paginationStates[sc.subCategoryID].currentPage === 0">
+        <i class="bi bi-caret-left-square-fill"></i>
+      </button>
+    </div>
+    <div class="col-md-10">
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let category of paginatedCategories(sc.subCategoryID)">
+          <div class="card h-100 border-0 shadow-sm">
+            <img [src]="category.imageUrl" class="card-img-top fixed-height" [alt]="category.nameCategory">
+            <div class="card-body">
+              <h5 class="card-title">{{category.nameCategory}}</h5>
+              <p class="card-text">{{category.description}}</p>
+              <a href="#" class="btn btn-success btn-block">Acheter</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-
-    <!-- Produit 3 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/banane.jpg" class="card-img-top fixed-height" alt="Banane">
-        <div class="card-body">
-          <h5 class="card-title">Bananes</h5>
-          <p class="card-text">Bananes mûres et délicieuses, idéales pour un apport rapide en énergie.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
+    <div class="col-md-1 d-flex align-items-center justify-content-center">
+        <button class="btn-arrow btn-arrow-right" (click)="nextPage(sc.subCategoryID)" [disabled]="(paginationStates[sc.subCategoryID].currentPage + 1) * paginationStates[sc.subCategoryID].itemsPerPage >= products.length">
+        <i class="bi bi-caret-right-square-fill"></i>
+      </button>
     </div>
-
-    <!-- Produit 4 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/carotte.jpg" class="card-img-top fixed-height" alt="Carotte">
-        <div class="card-body">
-          <h5 class="card-title">Carottes</h5>
-          <p class="card-text">Carottes fraîches et croquantes, parfaites pour les salades et les plats cuisinés.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 5 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/orange.jpg" class="card-img-top fixed-height" alt="Orange">
-        <div class="card-body">
-          <h5 class="card-title">Oranges</h5>
-          <p class="card-text">Oranges juteuses et sucrées, parfaites pour un jus frais et délicieux.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 6 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/tomate.jpg" class="card-img-top fixed-height" alt="Tomate">
-        <div class="card-body">
-          <h5 class="card-title">Tomates</h5>
-          <p class="card-text">Tomates rouges et mûres, idéales pour les salades et les sauces.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 7 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/poire.jpg" class="card-img-top fixed-height" alt="Poire">
-        <div class="card-body">
-          <h5 class="card-title">Poires</h5>
-          <p class="card-text">Poires juteuses et sucrées, parfaites pour un dessert ou une collation.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 8 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/concombre.jpg" class="card-img-top fixed-height" alt="Concombre">
-        <div class="card-body">
-          <h5 class="card-title">Concombres</h5>
-          <p class="card-text">Concombres frais et croquants, parfaits pour les salades et les sandwichs.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 9 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/fraise.jpg" class="card-img-top fixed-height" alt="Fraise">
-        <div class="card-body">
-          <h5 class="card-title">Fraises</h5>
-          <p class="card-text">Fraises sucrées et juteuses, parfaites pour les desserts et les salades de fruits.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 10 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/courgette.jpg" class="card-img-top fixed-height" alt="Courgette">
-        <div class="card-body">
-          <h5 class="card-title">Courgettes</h5>
-          <p class="card-text">Courgettes vertes et fraîches, idéales pour les sautés et les plats cuits au four.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 11 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/raisin.jpg" class="card-img-top fixed-height" alt="Raisin">
-        <div class="card-body">
-          <h5 class="card-title">Raisins</h5>
-          <p class="card-text">Raisins sucrés et juteux, parfaits pour une collation ou pour garnir les salades.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- Produit 12 -->
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/salade.jpg" class="card-img-top fixed-height" alt="Salade">
-        <div class="card-body">
-          <h5 class="card-title">Salades</h5>
-          <p class="card-text">Salades vertes et croquantes, idéales pour accompagner vos repas.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="card">
-        <img src="/assets/images/avocat.jpg" class="card-img-top fixed-height" alt="Avocat">
-        <div class="card-body">
-          <h5 class="card-title">Avocats</h5>
-          <p class="card-text">Avocats crémeux et savoureux, parfaits pour les salades, les toasts, et les guacamoles.</p>
-          <a href="#" class="btn btn-success">Acheter</a>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
+<footer class="bg-dark text-white mt-4">
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="text-uppercase">FraisDirect</h5>
+        <p>Votre plateforme en ligne dédiée à la valorisation des produits locaux.</p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Navigation</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white">Accueil</a></li>
+          <li><a href="#" class="text-white">Produits</a></li>
+          <li><a href="#" class="text-white">Contact</a></li>
+          <li><a href="#" class="text-white">À propos</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Suivez-nous</h5>
+        <a href="#" class="text-white mr-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white mr-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white mr-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white mr-2"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+        <p class="mb-0">© 2024 FraisDirect. Tous droits réservés.</p>
+      </div>
+    </div>
+  </div>
+</footer>
