@@ -10,7 +10,7 @@
           <input type="text" class="form-control" formControlName="codeProduct">
           <div *ngIf="productForm.controls['codeProduct'].invalid && (productForm.controls['codeProduct'].dirty || productForm.controls['codeProduct'].touched)">
             <div *ngIf="productForm.controls['codeProduct'].errors!.required">Code du produit est requis.</div>
-            <div *ngIf="productForm.controls['codeProduct'].errors!.minlength || productForm.controls['codeProduct'].errors.maxlength">Code du produit doit avoir exactement 5 caractères.</div>
+            <div *ngIf="productForm.controls['codeProduct'].errors!.minlength || productForm.controls['codeProduct'].errors!.maxlength">Code du produit doit avoir exactement 5 caractères.</div>
           </div>
         </div>
 
@@ -25,11 +25,6 @@
           <div *ngIf="productForm.controls['basicPrice'].invalid && (productForm.controls['basicPrice'].dirty || productForm.controls['basicPrice'].touched)">
             <div *ngIf="productForm.controls['basicPrice'].errors!.required">Prix de base est requis.</div>
           </div>
-        </div>
-
-        <div class="form-group">
-          <label>Statut:</label>
-          <input type="checkbox" formControlName="status">
         </div>
 
         <div class="form-group">

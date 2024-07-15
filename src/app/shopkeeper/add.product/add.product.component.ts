@@ -5,7 +5,8 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
   selector: 'app-add.product',
   standalone: true,
   imports: [
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   templateUrl: './add.product.component.html',
   styleUrl: './add.product.component.css'
