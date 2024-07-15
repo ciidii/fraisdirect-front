@@ -1,3 +1,7 @@
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+<!-- Lien vers Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<body>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6">
@@ -8,12 +12,10 @@
         <div class="form-group">
           <label>Code du produit:</label>
           <input type="text" class="form-control" formControlName="codeProduct">
-          <!--
-          <div *ngIf="productForm.controls['codeProduct'].invalid && (productForm.controls['codeProduct'].dirty || productForm.controls['codeProduct']?.touched)">
-            <div *ngIf="productForm.controls['codeProduct'].errors?.required">Code du produit est requis.</div>
-            <div *ngIf="productForm.controls['codeProduct'].errors?.minlength || productForm.controls['codeProduct'].errors?.maxlength">Code du produit doit avoir exactement 5 caractères.</div>
+          <div *ngIf="productForm.controls['codeProduct'].invalid && (productForm.controls['codeProduct'].dirty || productForm.controls['codeProduct'].touched)">
+            <div *ngIf="productForm.controls['codeProduct'].errors!.required">Code du produit est requis.</div>
+            <div *ngIf="productForm.controls['codeProduct'].errors!.minlength || productForm.controls['codeProduct'].errors!.maxlength">Code du produit doit avoir exactement 5 caractères.</div>
           </div>
-          -->
         </div>
 
         <div class="form-group">
@@ -24,17 +26,9 @@
         <div class="form-group">
           <label>Prix de base:</label>
           <input type="number" class="form-control" formControlName="basicPrice">
-          <!--
           <div *ngIf="productForm.controls['basicPrice'].invalid && (productForm.controls['basicPrice'].dirty || productForm.controls['basicPrice'].touched)">
             <div *ngIf="productForm.controls['basicPrice'].errors!.required">Prix de base est requis.</div>
           </div>
-          -->
-        </div>
-
-
-        <div class="form-group">
-          <label>Statut:</label>
-          <input type="checkbox" formControlName="status">
         </div>
 
         <div class="form-group">
@@ -45,14 +39,9 @@
         <div class="form-group">
           <label>Sous-catégorie:</label>
           <input type="number" class="form-control" formControlName="subCategory">
-          <!--
-          <div *ngIf="productForm.controls['subCategory']?.invalid && (productForm.controls['subCategory']?.dirty || productForm.controls['subCategory']?.touched)">
-
-            <div *ngIf="productForm.controls['subCategory']?.errors?.required">Sous-catégorie est requise.</div>
-
+          <div *ngIf="productForm.controls['subCategory'].invalid && (productForm.controls['subCategory'].dirty || productForm.controls['subCategory'].touched)">
+            <div *ngIf="productForm.controls['subCategory'].errors!.required">Sous-catégorie est requise.</div>
           </div>
-          -->
-
         </div>
 
         <div class="form-group">
@@ -65,3 +54,8 @@
     </div>
   </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>

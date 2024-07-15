@@ -9,3 +9,28 @@ h2 {
   background-color: #28a745;
   border-color: #28a745;
 }
+body {
+  background-color: #f8f9fa;
+}
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.form-header h1 {
+  font-size: 2rem;
+}
+.btn-custom {
+  background-color: #28a745;
+  color: #fff;
+}
+.btn-custom:hover {
+  background-color: #218838;
+}
