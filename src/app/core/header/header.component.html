@@ -18,7 +18,7 @@
           <a [routerLink]="['/shopkeeper/product']" class="nav-link nav-spacing">Ajouter Produit</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link nav-spacing" href="#">Contacts</a>
+          <a [routerLink]="['/shopkeeper/contact']" class="nav-link nav-spacing">Contacts</a>
         </li>
       </ul>
       <!-- Champ de recherche au centre -->
@@ -26,7 +26,6 @@
         <input class="form-control me-2 search-bar" type="search" placeholder="Rechercher" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Recherche</button>
       </form>
-
       <!-- Icônes de profil et panier -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
