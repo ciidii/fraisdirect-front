@@ -1,0 +1,9 @@
+body {
+  padding-top: 56px;
+}
+.contact-info {
+  background-color: #f8f9fa;
+  padding: 30px;
+  margin-top: 30px;
+  border-radius: 10px;
+}
