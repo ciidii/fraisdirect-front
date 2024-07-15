@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contactez-nous - FraisDirect</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      padding-top: 56px;
+    }
+    .contact-info {
+      background-color: #f8f9fa;
+      padding: 30px;
+      margin-top: 30px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">FraisDirect</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Produits</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">À propos</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container">
+  <h1 class="mt-4 mb-3">Contactez-nous</h1>
+
+  <div class="row">
+    <!-- Contact Form -->
+    <div class="col-lg-8 mb-4">
+      <h3>Envoyez-nous un message</h3>
+      <form>
+        <div class="form-group">
+          <label for="name">Nom:</label>
+          <input type="text" class="form-control" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Adresse email:</label>
+          <input type="email" class="form-control" id="email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Téléphone:</label>
+          <input type="tel" class="form-control" id="phone" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Message:</label>
+          <textarea class="form-control" id="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Envoyer</button>
+      </form>
+    </div>
+    <!-- Contact Details -->
+    <div class="col-lg-4 mb-4">
+      <h3>Coordonnées</h3>
+      <p>
+        123 Rue de la Ferme<br>
+        75001 Paris, France<br>
+      </p>
+      <p>
+        <i class="fas fa-phone"></i>
+        <abbr title="Phone">P</abbr>: +33 1 23 45 67 89
+      </p>
+      <p>
+        <i class="fas fa-envelope"></i>
+        <abbr title="Email">E</abbr>: <a href="mailto:info@fraisdirect.com">info&#64;fraisdirect.com</a>
+      </p>
+      <p>
+        <i class="fas fa-clock"></i>
+        <abbr title="Hours">H</abbr>: Lundi - Vendredi: 9:00 à 17:00
+      </p>
+    </div>
+  </div>
+  <!-- Google Map Embed -->
+  <div class="row">
+    <div class="col-lg-12 mb-4">
+      <h3>Notre emplacement</h3>
+      <iframe width="100%" height="400px" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?q=Paris,France&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-dark text-white mt-4" id="contact">
+  <div class="container py-4">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="text-uppercase">FraisDirect</h5>
+        <p>Votre plateforme en ligne dédiée à la valorisation des produits locaux.</p>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Navigation</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white">Accueil</a></li>
+          <li><a href="#" class="text-white">Produits</a></li>
+          <li><a href="#contact" class="text-white">Contact</a></li>
+          <li><a href="#" class="text-white">À propos</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Suivez-nous</h5>
+        <a href="#" class="text-white mr-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white mr-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white mr-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white mr-2"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+        <p class="mb-0">© 2024 FraisDirect. Tous droits réservés.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
