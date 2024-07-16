@@ -5,7 +5,16 @@
         <div class="mb-3">
           <label for="codeProduct" class="form-label">Code du Produit</label>
           <input type="text" id="codeProduct" class="form-control" formControlName="codeProduct">
-          <div *ngIf="productForm.get('codeProduct')!.invalid && productForm.get('codeProduct')!.touched" class="text-danger">
+          <div *ngIf="productForm.get('codeProduct')!.invalid && productForm.get('codeProduct')!.touched"
+               class="text-danger">
+            Le code du produit doit comporter exactement 5 caractères.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="codeProduct" class="form-label">Nom du Produit</label>
+          <input type="text" id="nameProduct" class="form-control" formControlName="nameProduct">
+          <div *ngIf="productForm.get('nameProduct')!.invalid && productForm.get('nameProduct')!.touched"
+               class="text-danger">
             Le code du produit doit comporter exactement 5 caractères.
           </div>
         </div>
@@ -16,7 +25,8 @@
         <div class="mb-3">
           <label for="basicPrice" class="form-label">Prix de Base</label>
           <input type="number" id="basicPrice" class="form-control" formControlName="basicPrice">
-          <div *ngIf="productForm.get('basicPrice')!.invalid && productForm.get('basicPrice')!.touched" class="text-danger">
+          <div *ngIf="productForm.get('basicPrice')!.invalid && productForm.get('basicPrice')!.touched"
+               class="text-danger">
             Le prix de base est requis.
           </div>
         </div>
@@ -37,7 +47,8 @@
         <div class="mb-3">
           <label for="subCategory" class="form-label">Sous-catégorie</label>
           <input type="number" id="subCategory" class="form-control" formControlName="subCategory">
-          <div *ngIf="productForm.get('subCategory')!.invalid && productForm.get('subCategory')!.touched" class="text-danger">
+          <div *ngIf="productForm.get('subCategory')!.invalid && productForm.get('subCategory')!.touched"
+               class="text-danger">
             La sous-catégorie est requise.
           </div>
         </div>

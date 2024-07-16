@@ -21,6 +21,7 @@ export class AddProductComponent implements OnInit {
   ngOnInit(): void {
     this.productForm = this.fb.group({
       codeProduct: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
+      nameProduct: [''],
       description: [''],
       basicPrice: [0, [Validators.required]],
       status: [false],
@@ -52,6 +53,7 @@ export class AddProductComponent implements OnInit {
       formData.append('basicPrice', this.productForm.get('basicPrice')!.value);
       formData.append('status', this.productForm.get('status')!.value);
       formData.append('quantity', this.productForm.get('quantity')!.value);
+      formData.append('name', this.productForm.get('nameProduct')!.value);
       formData.append('subCategory', this.subCategories.subCategoryID.toString());
 
       for (let image of this.images) {
