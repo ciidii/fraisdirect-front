@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
 import {SubCategory} from "../../core/model/SubCategory";
 import {ProductService} from "../../core/service/ProductService";
+import {Component, OnInit} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-add-product',
