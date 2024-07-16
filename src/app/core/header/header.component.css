@@ -74,4 +74,6 @@
 .navbar-nav .nav-item .nav-link i {
   font-size: 1rem; /* Ajustez la taille selon vos besoins */
 }
-
+.nav-spacing {
+  margin-right: 10px; /* Réduire légèrement la marge entre les éléments de navigation */
+}

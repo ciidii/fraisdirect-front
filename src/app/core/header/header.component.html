@@ -3,30 +3,42 @@
     <a class="navbar-brand" [routerLink]="['/customer/']">
       <img src="/assets/images/logofd.png" alt="Logo FraisDirect" class="logo-img">
     </a>
-    <!-- Bouton pour afficher/cacher le menu sur les appareils mobiles -->
+
+    <!-- Bouton de bascule pour afficher/cacher le menu sur les appareils mobiles -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <!-- Liens de navigation principaux -->
+
+    <!-- Contenu du menu de navigation -->
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav me-auto">
         <li class="nav-item">
-          <a class="nav-link nav-spacing" [routerLink]="['/shopkeeper/noservices']" >Services</a>
+          <a class="nav-link nav-spacing" [routerLink]="['/shopkeeper/noservices']">Services</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-spacing" href="#" id="gestionProduitsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Gestion des Produits
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="gestionProduitsDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/product']">Ajouter Produit</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/gestionprod']">Liste des Produits</a></li>
+            <!-- Ajoutez d'autres options de gestion des produits ici si nécessaire -->
+          </ul>
         </li>
         <li class="nav-item">
-          <a [routerLink]="['/shopkeeper/product']" class="nav-link nav-spacing">Ajouter Produit</a>
-        </li>
-        <li class="nav-item">
-          <a [routerLink]="['/shopkeeper/contact']" class="nav-link nav-spacing">Contacts</a>
+          <a class="nav-link nav-spacing" [routerLink]="['/shopkeeper/contact']">Contacts</a>
         </li>
       </ul>
+
       <!-- Champ de recherche au centre -->
       <form class="d-flex mx-auto search-bar-form">
         <input class="form-control me-2 search-bar" type="search" placeholder="Rechercher" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Recherche</button>
       </form>
-      <!-- Icônes de profil et panier -->
+
+      <!-- Icônes de profil et panier à droite -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle nav-spacing btn btn-outline-success profile-cart-exception"
@@ -34,8 +46,8 @@
             <i class="bi bi-person icon-small"></i> Profil
           </a>
           <ul class="dropdown-menu" aria-labelledby="profileDropdown">
-            <li><a class="dropdown-item dropdown-hover" href="#">Créer un compte</a></li>
-            <li><a class="dropdown-item dropdown-hover" href="#">Se connecter</a></li>
+            <li><a class="dropdown-item" href="#">Créer un compte</a></li>
+            <li><a class="dropdown-item" href="#">Se connecter</a></li>
           </ul>
         </li>
         <li class="nav-item">
