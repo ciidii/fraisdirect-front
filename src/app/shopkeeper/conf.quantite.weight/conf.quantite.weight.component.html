@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulaire de produit</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+  <h2>Formulaire de produit</h2>
+  <form>
+    <!-- Champ pour Label -->
+    <div class="form-group">
+      <label for="label">Label</label>
+      <input type="text" class="form-control" id="label" name="label" placeholder="Label du produit">
+    </div>
+    <!-- Champ pour Weight -->
+    <div class="form-group">
+      <label for="weight">Weight (kg)</label>
+      <input type="number" step="0.01" class="form-control" id="weight" name="weight" placeholder="Entrez le poids du produit">
+    </div>
+    <!-- Champ pour Price -->
+    <div class="form-group">
+      <label for="price">Price(FCFA)</label>
+      <input type="number" step="1" class="form-control" id="price" name="price" placeholder="Entrez le prix du produit">
+    </div>
+    <!-- Liste déroulante pour Around -->
+    <div class="form-group">
+      <label for="around">Around</label>
+      <select class="form-control" id="around" name="around">
+        <option value="Closer">Closer</option>
+        <option value="Lower">Lower</option>
+        <option value="Up">Up</option>
+        <option value="Net">Net</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Valider</button>
+  </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+

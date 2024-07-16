@@ -1,0 +1,27 @@
+.product-item {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.product-info {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product-field {
+  flex: 1 1 50%; /* Utilisation de flexbox pour disposer les champs sur deux colonnes */
+  padding: 5px 10px;
+}
+
+.product-field strong {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}

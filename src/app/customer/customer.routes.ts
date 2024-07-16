@@ -1,0 +1,18 @@
+import {RouterModule, Routes} from "@angular/router";
+import {PresentationPageComponent} from "./presentation-page/presentation-page.component";
+import {NgModule} from "@angular/core";
+import {CreateAccountComponent} from "./create.account/create.account.component";
+import {ValidateAccountComponent} from "./validate.account/validate.account.component";
+import {DetailProductComponent} from "./detail.product/detail.product.component";
+ const routesCuster:Routes=[
+  {path:"",component:PresentationPageComponent},
+   {path:"login",component:CreateAccountComponent},
+   {path:"validate",component:ValidateAccountComponent},
+   {path:"product-details/:product-id",component:DetailProductComponent},
+];
+
+@NgModule({
+  imports:[RouterModule.forChild(routesCuster)],
+  exports:[RouterModule]
+})
+export class CustomerRoutes{}

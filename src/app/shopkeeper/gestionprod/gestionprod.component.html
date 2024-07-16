@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2>Liste des Produits</h2>
+      <ul class="list-group">
+        <li class="list-group-item product-item" *ngFor="let product of products">
+          <div class="product-info">
+            <div class="product-field">
+              <strong>Code Produit:</strong> {{ product.codeProduit }}
+            </div>
+            <div class="product-field">
+              <strong>Description:</strong> {{ product.description }}
+            </div>
+            <div class="product-field">
+              <strong>Prix de base:</strong> {{ product.basicPrice }}
+            </div>
+            <div class="product-field">
+              <strong>Quantité:</strong> {{ product.quantity }}
+            </div>
+
+            <div class="product-field">
+              <strong>Sous-catégorie:</strong> {{ product.subCategory}}
+            </div>
+          </div>
+        </li>
+      </ul>
+      <pagination-controls (pageChange)="onPageChange($event)" [currentPage]="currentPage" [itemsPerPage]="itemsPerPage" [totalItems]="totalItems"></pagination-controls>
+    </div>
+  </div>
+</div>
