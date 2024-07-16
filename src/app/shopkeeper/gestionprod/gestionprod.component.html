@@ -6,18 +6,20 @@
         <li class="list-group-item product-item" *ngFor="let product of products">
           <div class="product-info">
             <div class="product-field">
-              <strong>Code Produit:</strong> {{ product.codeProduit }}
+              <strong>Code Produit:</strong> {{ product.codeProduit}}
             </div>
             <div class="product-field">
               <strong>Description:</strong> {{ product.description }}
             </div>
             <div class="product-field">
-              <strong>Prix de base:</strong> {{ product.basicPrice }}
+              <strong>Prix de base:</strong> {{ product.basicPrice}}
             </div>
             <div class="product-field">
               <strong>Quantité:</strong> {{ product.quantity }}
             </div>
-
+            <div class="product-field">
+              <strong>Statut:</strong> {{ product.image }}
+            </div>
             <div class="product-field">
               <strong>Sous-catégorie:</strong> {{ product.subCategory}}
             </div>
