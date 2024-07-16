@@ -1,15 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { NgForOf } from "@angular/common";
-import { CategoryResponseDTO } from "../../core/model/CategoryResponseDTO";
-import { CategoryService } from "../../core/service/categoryService";
-import { RequestPageableVO } from "../../core/model/RequestPageableVO";
-import { SubCategoryResponseDTO } from "../../core/model/SubCategoryResponseDTO";
+import {Component, OnInit} from '@angular/core';
+import {NgForOf} from "@angular/common";
+import {CategoryResponseDTO} from "../../core/model/CategoryResponseDTO";
+import {CategoryService} from "../../core/service/categoryService";
+import {RequestPageableVO} from "../../core/model/RequestPageableVO";
+import {SubCategoryResponseDTO} from "../../core/model/SubCategoryResponseDTO";
 import {PaginationState} from "../../core/model/PaginationState";
+import {CatalogueService} from "../../core/service/catalogue.service";
+import {ProductResponseDTO} from "../../core/model/ProductResponseDTO";
+import {Router, RouterLink} from "@angular/router";
+import {PriceService} from "../../core/service/pricies.service";
+import {ProductPriceDTO} from "../../core/model/ProductPriceDTO";
+import {PriceModel} from "../../core/model/PriceModel";
+
 @Component({
   selector: 'app-presentation-page',
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    RouterLink
   ],
   templateUrl: './presentation-page.component.html',
   styleUrls: ['./presentation-page.component.css']
@@ -18,26 +26,16 @@ export class PresentationPageComponent implements OnInit {
   public categories!: Array<CategoryResponseDTO>;
   public subcategories!: Array<SubCategoryResponseDTO>;
   public paginationStates: { [subCategoryID: number]: PaginationState } = {};
+  public productsBySubCategory: { [subCategoryID: number]: Array<ProductResponseDTO> } = {};
+  public productPrice!: ProductPriceDTO<any>;
 
-  products = [
-    { nameCategory: 'Pommes', imageUrl: '/assets/images/pomme.jpg', description: 'Des pommes fraîches et croquantes, parfaites pour une collation saine.' },
-    { nameCategory: 'Bananes', imageUrl: '/assets/images/banane.jpg', description: 'Bananes mûres et délicieuses, idéales pour un apport rapide en énergie.' },
-    { nameCategory: 'Carottes', imageUrl: '/assets/images/carotte.jpg', description: 'Carottes fraîches et croquantes, parfaites pour les salades et les plats cuisinés.' },
-    { nameCategory: 'Oranges', imageUrl: '/assets/images/orange.jpg', description: 'Oranges juteuses et sucrées, parfaites pour un jus frais et délicieux.' },
-    { nameCategory: 'Tomates', imageUrl: '/assets/images/tomate.jpg', description: 'Tomates rouges et mûres, idéales pour les salades et les sauces.' },
-    { nameCategory: 'Poires', imageUrl: '/assets/images/poire.jpg', description: 'Poires juteuses et sucrées, parfaites pour un dessert ou une collation.' },
-    { nameCategory: 'Concombres', imageUrl: '/assets/images/concombre.jpg', description: 'Concombres frais et croquants, parfaits pour les salades et les sandwichs.' },
-    { nameCategory: 'Fraises', imageUrl: '/assets/images/fraise.jpg', description: 'Fraises sucrées et juteuses, parfaites pour les desserts et les salades de fruits.' },
-    { nameCategory: 'Courgettes', imageUrl: '/assets/images/courgette.jpg', description: 'Courgettes vertes et fraîches, idéales pour les sautés et les plats cuits au four.' },
-    { nameCategory: 'Raisins', imageUrl: '/assets/images/raisin.jpg', description: 'Raisins sucrés et juteux, parfaits pour une collation ou pour garnir les salades.' },
-    { nameCategory: 'Salades', imageUrl: '/assets/images/salade.jpg', description: 'Salades vertes et croquantes, idéales pour accompagner vos repas.' },
-    { nameCategory: 'Avocats', imageUrl: '/assets/images/avocat.jpg', description: 'Avocats crémeux et savoureux, parfaits pour les salades, les toasts, et les guacamoles.' },
-    { nameCategory: 'Aubergines', imageUrl: '/assets/images/aubergine.jpg', description: 'Aubergines fraîches et savoureuses, parfaites pour les plats méditerranéens.' },
-    { nameCategory: 'Oignons', imageUrl: '/assets/images/onion.jpg', description: 'Oignons frais et croquants, parfaits pour les salades et les plats cuisinés.' },
-    { nameCategory: 'Piments', imageUrl: '/assets/images/piment.jpg', description: 'Piments frais et épicés, parfaits pour ajouter du piquant à vos plats.' },
-  ];
-
-  constructor(private categoryService: CategoryService) { }
+  constructor(
+    private categoryService: CategoryService,
+    private catalogueService: CatalogueService,
+    private route: Router,
+    private priceService: PriceService
+  ) {
+  }
 
   ngOnInit(): void {
     this.categoryService.getCategories(new RequestPageableVO(1, 10)).subscribe({
@@ -50,13 +48,13 @@ export class PresentationPageComponent implements OnInit {
     });
   }
 
-  get paginatedCategories() {
+  get paginatedProducts() {
     return (subCategoryID: number) => {
       const state = this.paginationStates[subCategoryID];
-      if (state) {
+      if (state && this.productsBySubCategory[subCategoryID]) {
         const start = state.currentPage * state.itemsPerPage;
         const end = start + state.itemsPerPage;
-        return this.products.slice(start, end);
+        return this.productsBySubCategory[subCategoryID].slice(start, end);
       }
       return [];
     };
@@ -64,7 +62,7 @@ export class PresentationPageComponent implements OnInit {
 
   nextPage(subCategoryID: number) {
     const state = this.paginationStates[subCategoryID];
-    if (state && (state.currentPage + 1) * state.itemsPerPage < this.products.length) {
+    if (state && (state.currentPage + 1) * state.itemsPerPage < (this.productsBySubCategory[subCategoryID]?.length || 0)) {
       state.currentPage++;
     }
   }
@@ -80,10 +78,10 @@ export class PresentationPageComponent implements OnInit {
     this.categoryService.getSubCategoriesByCategoryID(new RequestPageableVO(1, 10), categoryID).subscribe({
       next: response => {
         this.subcategories = response.items;
-        // Initialiser l'état de pagination pour chaque sous-catégorie
         this.subcategories.forEach(sc => {
+          this.getProductsBySubcategoryId(sc.subCategoryID);
           if (!this.paginationStates[sc.subCategoryID]) {
-            this.paginationStates[sc.subCategoryID] = { currentPage: 0, itemsPerPage: 3 };
+            this.paginationStates[sc.subCategoryID] = {currentPage: 0, itemsPerPage: 3};
           }
         });
       },
@@ -92,4 +90,42 @@ export class PresentationPageComponent implements OnInit {
       }
     });
   }
+
+  getProductsBySubcategoryId(subcategoryID: number) {
+    this.catalogueService.getProductBySubCategory(new RequestPageableVO(1, 10), subcategoryID).subscribe({
+      next: response => {
+        this.productsBySubCategory[subcategoryID] = response.items;
+        this.productsBySubCategory[subcategoryID].forEach(product => {
+          this.getProductPrice(product);
+        });
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
+
+  getProductPrice(product: ProductResponseDTO) {
+    this.priceService.getProductPrice(product.productID).subscribe({
+      next: response => {
+        product.productPrice = response.data;
+      },
+      error: err => {
+        console.log(err);
+      }
+    });
+  }
+
+  formatImage(image: string): string | undefined {
+    if (image !== undefined) {
+      return `data:image/png;base64,${image}`;
+    }
+    return "";
+  }
+
+  handleDescription(productID: number) {
+    this.route.navigateByUrl(`/product-details/${productID}`);
+  }
+
+  protected readonly PriceModel = PriceModel;
 }
