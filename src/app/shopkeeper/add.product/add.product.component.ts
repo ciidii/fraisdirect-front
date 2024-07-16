@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -8,20 +7,6 @@ import {SubCategory} from "../../core/model/SubCategory";
 
 @Component({
   selector: 'app-add-product',
-=======
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {RouterLink} from "@angular/router";
-
-@Component({
-  selector: 'app-add.product',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    RouterLink,
-
-  ],
->>>>>>> bfec887ecfc06fa62b635e32edbaed85b679347d
   templateUrl: './add.product.component.html',
   styleUrls: ['./add.product.component.css'],
   standalone: true,
