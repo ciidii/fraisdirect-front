@@ -1,36 +1,96 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import {ProductService} from "../../core/service/ProductService";
+import {SubCategory} from "../../core/model/SubCategory";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
-  selector: 'app-add.product',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-
-  ],
+  selector: 'app-add-product',
   templateUrl: './add.product.component.html',
-  styleUrl: './add.product.component.css'
+  styleUrls: ['./add.product.component.css'],
+  standalone: true,
+  imports: [CommonModule, ReactiveFormsModule]
 })
-export class AddProductComponent {
-  productForm: FormGroup;
+export class AddProductComponent implements OnInit {
+  productForm!: FormGroup;
+  subCategories!: SubCategory;
+  images!: File[];
 
-  constructor(private formBuilder: FormBuilder) {
-    this.productForm = this.formBuilder.group({
+  constructor(private fb: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar ) { }
+
+  ngOnInit(): void {
+    this.productForm = this.fb.group({
       codeProduct: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(5)]],
       description: [''],
-      basicPrice: ['', Validators.required],
+      basicPrice: [0, [Validators.required]],
       status: [false],
-      quantity: [0],
-      subCategory: ['', Validators.required],
-      images: [[]]
+      quantity: [0, [Validators.required]],
+      subCategory: ['', [Validators.required]],
+      images: [null, [Validators.required]]
     });
+
+    this.subCategories = {
+      subCategoryID: 1, nameSubCategory: "", descriptionSubCategory: ""
+    };
+  }
+
+  onFileChange(event: any) {
+    if (event.target.files.length > 0) {
+      const files = event.target.files;
+      this.images = files;
+      this.productForm.patchValue({
+        images: files
+      });
+    }
   }
 
   onSubmit() {
     if (this.productForm.valid) {
-      console.log(this.productForm.value);
-      // Perform API call or other operations with this.productForm.value
+      const formData = new FormData();
+      formData.append('codeProduct', this.productForm.get('codeProduct')!.value);
+      formData.append('description', this.productForm.get('description')!.value);
+      formData.append('basicPrice', this.productForm.get('basicPrice')!.value);
+      formData.append('status', this.productForm.get('status')!.value);
+      formData.append('quantity', this.productForm.get('quantity')!.value);
+      formData.append('subCategory', this.subCategories.subCategoryID.toString());
+
+      for (let image of this.images) {
+        formData.append('images', image);
+      }
+
+      this.productService.addProduct(formData).subscribe({
+        next: response => {
+          console.log(response);
+          this.productForm.reset();
+          this.openSnackBar('Ajout réussi !', 'Fermer');
+        },
+        error: err => {
+          console.log(err);
+        }
+      });
+    } else {
+      this.validateAllFormFields(this.productForm);
     }
   }
 
+  validateAllFormFields(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormGroup) {
+        this.validateAllFormFields(control);
+      } else {
+        control!.markAsTouched({ onlySelf: true });
+      }
+    });
+  }
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 20000,
+      horizontalPosition: 'center', // Position horizontale du snackbar
+      verticalPosition: 'bottom', // Position verticale du snackbar
+      panelClass: ['snackbar-success'] // Classe CSS pour personnaliser le snackbar
+    });
+  }
 }
