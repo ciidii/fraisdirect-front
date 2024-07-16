@@ -1,23 +1,21 @@
 .form-container {
   max-width: 600px;
-  margin: 50px auto;
+  margin: 100px auto 0; /* Ajuste la marge supérieure selon vos besoins */
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-top: 70px; /* Ajoute une marge supérieure */
 }
 
 h2 {
   margin-top: 70px;
 }
+
 /* Personnalisation du snackbar */
 .snackbar-success {
   background-color: #000000; /* Fond noir */
   color: #4caf50; /* Texte vert */
 }
-
-
 
 .form-group {
   margin-bottom: 20px;

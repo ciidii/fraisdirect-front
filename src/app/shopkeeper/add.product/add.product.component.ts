@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import {ProductService} from "../../core/service/ProductService";
 import {SubCategory} from "../../core/model/SubCategory";
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-add-product',
@@ -18,7 +17,7 @@ export class AddProductComponent implements OnInit {
   subCategories!: SubCategory;
   images!: File[];
 
-  constructor(private fb: FormBuilder, private productService: ProductService, private snackBar: MatSnackBar ) { }
+  constructor(private fb: FormBuilder, private productService: ProductService) { }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -64,7 +63,6 @@ export class AddProductComponent implements OnInit {
         next: response => {
           console.log(response);
           this.productForm.reset();
-          this.openSnackBar('Ajout réussi !', 'Fermer');
         },
         error: err => {
           console.log(err);
@@ -83,14 +81,6 @@ export class AddProductComponent implements OnInit {
       } else {
         control!.markAsTouched({ onlySelf: true });
       }
-    });
-  }
-  openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {
-      duration: 20000,
-      horizontalPosition: 'center', // Position horizontale du snackbar
-      verticalPosition: 'bottom', // Position verticale du snackbar
-      panelClass: ['snackbar-success'] // Classe CSS pour personnaliser le snackbar
     });
   }
 }
