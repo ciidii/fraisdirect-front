@@ -14,7 +14,7 @@
     <div class="col-md-6">
       <h1 class="display-4">{{product.name}}</h1>
       <p class="lead">{{product.description}}</p>
-      <h3 class="text-success"><strong>Prix : {{ product.productPrice?.priceModel == "WEIGHT" ? (product.productPrice.basedPriceID.wight  + ' kg /'+product.productPrice.basedPriceID.price +'F CFA') : (product.productPrice.basedPriceID.price + ' F CFA /'+product.productPrice.basedPriceID.quantity+' unité') }}</strong></h3>
+      <h3 class="text-success"><strong>Prix : {{ product.productPrice.priceModel == "WEIGHT" ? (product.productPrice.basedPriceID.wight  + ' kg /'+product.productPrice.basedPriceID.price +'F CFA') : (product.productPrice.basedPriceID.price + ' F CFA /'+product.productPrice.basedPriceID.quantity+' unité') }}</strong></h3>
       <hr>
       <p *ngFor="let attr of product.subCategoryResponseDTO.attributes" class="card-text"><strong>{{attr.attributeName}} :</strong> {{attr.attributeDescription}}</p>
       <hr>

@@ -3,6 +3,8 @@ import {ProductService} from "../../core/service/ProductService";
 import {Component, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
+import {CategoryService} from "../../core/service/categoryService";
+import {SubCategoryResponseDTO} from "../../core/model/SubCategoryResponseDTO";
 
 @Component({
   selector: 'app-add-product',
@@ -13,10 +15,11 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 })
 export class AddProductComponent implements OnInit {
   productForm!: FormGroup;
-  subCategories!: SubCategory;
+  subCategories!: Array<SubCategoryResponseDTO>;
   images!: File[];
 
-  constructor(private fb: FormBuilder, private productService: ProductService) { }
+  constructor(private fb: FormBuilder, private productService: ProductService, private categoryService: CategoryService) {
+  }
 
   ngOnInit(): void {
     this.productForm = this.fb.group({
@@ -29,10 +32,14 @@ export class AddProductComponent implements OnInit {
       subCategory: ['', [Validators.required]],
       images: [null, [Validators.required]]
     });
-
-    this.subCategories = {
-      subCategoryID: 1, nameSubCategory: "", descriptionSubCategory: ""
-    };
+    this.categoryService.getSubCategories().subscribe({
+      next: data => {
+        this.subCategories = data.data;
+      },
+      error:err => {
+        console.log(err);
+      }
+    })
   }
 
   onFileChange(event: any) {
@@ -54,7 +61,7 @@ export class AddProductComponent implements OnInit {
       formData.append('status', this.productForm.get('status')!.value);
       formData.append('quantity', this.productForm.get('quantity')!.value);
       formData.append('name', this.productForm.get('nameProduct')!.value);
-      formData.append('subCategory', this.subCategories.subCategoryID.toString());
+      formData.append('subCategory', this.productForm.get("subCategory")!.value);
 
       for (let image of this.images) {
         formData.append('images', image);
@@ -80,7 +87,7 @@ export class AddProductComponent implements OnInit {
       if (control instanceof FormGroup) {
         this.validateAllFormFields(control);
       } else {
-        control!.markAsTouched({ onlySelf: true });
+        control!.markAsTouched({onlySelf: true});
       }
     });
   }
