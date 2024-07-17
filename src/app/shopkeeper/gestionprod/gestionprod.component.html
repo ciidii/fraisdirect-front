@@ -6,6 +6,7 @@
         <thead>
         <tr>
           <th scope="col">Code Produit</th>
+          <th scope="col">Nom du produit</th>
           <th scope="col">Description</th>
           <th scope="col">Prix de base</th>
           <th scope="col">Quantité</th>
@@ -16,6 +17,7 @@
         <tbody>
         <tr *ngFor="let product of products">
           <td>{{ product.codeProduit }}</td>
+          <td>{{product.name}}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.basicPrice }}</td>
           <td>{{ product.quantity }}</td>
