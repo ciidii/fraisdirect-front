@@ -17,7 +17,7 @@ export class CatalogueService {
   public getProductBySubCategory(requestPageableVO: RequestPageableVO, subcategoryID: number): Observable<ResponsePageableApi<Array<ProductResponseDTO>>> {
     let options = {
       headers: new HttpHeaders().set("Content-Type", "application/json"),
-      params: new HttpParams().set("page", requestPageableVO.page).set("rpp", requestPageableVO.rpp).set("subcategoryID", subcategoryID)
+      params: new HttpParams().set("page", requestPageableVO.page).set("rpp", requestPageableVO.rpp).set("subcategoryID", subcategoryID).set("status",2)
     }
     return this.http.get<ResponsePageableApi<Array<ProductResponseDTO>>>(this.environment.url + "catalogue/product-by-subcategory", options);
 

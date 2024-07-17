@@ -6,7 +6,7 @@ import {ValidateAccountComponent} from "./validate.account/validate.account.comp
 import {DetailProductComponent} from "./detail.product/detail.product.component";
  const routesCuster:Routes=[
   {path:"",component:PresentationPageComponent},
-   {path:"login",component:CreateAccountComponent},
+   {path:"create-account",component:CreateAccountComponent},
    {path:"validate",component:ValidateAccountComponent},
    {path:"product-details/:product-id",component:DetailProductComponent},
 ];

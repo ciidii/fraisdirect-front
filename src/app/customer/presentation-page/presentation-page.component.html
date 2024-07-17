@@ -51,11 +51,11 @@
               <img [src]="formatImage(product.images[0])" class="card-img-top fixed-height" alt="{{ product.description }}">
             </a>
             <div class="card-body">
-              <h5 class="card-title">{{ product.codeProduct }}</h5>
+              <h5 class="card-title">{{ product.name }}</h5>
               <p class="card-text">{{ product.description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <span class="font-weight-bold">
-                  Prix : {{ product.productPrice?.priceModel == "WEIGHT" ? (product.productPrice.basedPriceID.wight  + ' kg /'+product.productPrice.basedPriceID.price +'F CFA') : (product.productPrice.basedPriceID.price + ' F CFA /'+product.productPrice.basedPriceID.quantity+' unité') }}
+                  Prix : {{ product.productPrice.priceModel == "WEIGHT" ? (product.productPrice.basedPriceID.wight  + ' kg /'+product.productPrice.basedPriceID.price +'F CFA') : (product.productPrice.basedPriceID.price + ' F CFA /'+product.productPrice.basedPriceID.quantity+' unité') }}
                 </span>
                 <a href="#" class="btn btn-outline-success d-flex align-items-center">
                   <i class="bi bi-cart-plus me-2"></i>
@@ -74,17 +74,3 @@
   </div>
 </div>
 
-<footer class="bg-dark text-white mt-4">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <p class="mb-0">&copy; 2023 FraisDirect. Tous droits réservés.</p>
-      </div>
-      <div class="col-md-6 text-md-right">
-        <a href="#" class="text-white">Mentions légales</a>
-        <span class="text-white mx-2">|</span>
-        <a href="#" class="text-white">Politique de confidentialité</a>
-      </div>
-    </div>
-  </div>
-</footer>
