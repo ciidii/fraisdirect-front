@@ -4,6 +4,8 @@ import {CatalogueService} from "../../core/service/catalogue.service";
 import {ProductResponseDTO} from "../../core/model/ProductResponseDTO";
 import {NgForOf} from "@angular/common";
 import {PriceService} from "../../core/service/pricies.service";
+import {UtilsService} from "../../core/service/utils.service";
+import {CartService} from "../../core/service/cart.service";
 
 @Component({
   selector: 'app-detail.product',
@@ -20,7 +22,9 @@ export class DetailProductComponent implements OnInit {
 
   constructor(private activeRoute: ActivatedRoute,
               private catalogueService: CatalogueService,
-              private priceService:PriceService
+              private priceService:PriceService,
+              public utilsService: UtilsService,
+              private cartService:CartService
 
   ) {
   }
@@ -46,10 +50,8 @@ export class DetailProductComponent implements OnInit {
       }
     });
   }
-  formatImage(image: string): string | undefined {
-    if (image != undefined) {
-      return `data:image/png;base64,${image}`;
-    }
-    return ""
+
+  addCart(product: ProductResponseDTO) {
+      this.cartService.addToCart(product)
   }
 }

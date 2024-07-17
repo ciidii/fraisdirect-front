@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {RouterLink} from "@angular/router";
+import {CartService} from "../service/cart.service";
 
 @Component({
   selector: 'app-header',
@@ -11,8 +12,6 @@ import {RouterLink} from "@angular/router";
   styleUrl: './header.component.css'
 })
 export class HeaderComponent {
-
-  handleLogout() {
-
+  constructor(public cartService:CartService) {
   }
 }

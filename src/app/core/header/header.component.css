@@ -78,3 +78,20 @@
 .nav-spacing {
   margin-right: 10px; /* Réduire légèrement la marge entre les éléments de navigation */
 }
+.badge {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.badge-pill {
+  border-radius: 10rem;
+}
+
+.profile-cart-exception {
+  display: flex;
+  align-items: center;
+}
+
+.profile-cart-exception .badge {
+  margin-right: 0.5rem;
+}
