@@ -1,29 +1,36 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-10">
       <h2>Liste des Produits</h2>
-      <ul class="list-group">
-        <li class="list-group-item product-item" *ngFor="let product of products">
-          <div class="product-info">
-            <div class="product-field">
-              <strong>Code Produit:</strong> {{ product.codeProduit }}
-            </div>
-            <div class="product-field">
-              <strong>Description:</strong> {{ product.description }}
-            </div>
-            <div class="product-field">
-              <strong>Prix de base:</strong> {{ product.basicPrice }}
-            </div>
-            <div class="product-field">
-              <strong>Quantité:</strong> {{ product.quantity }}
-            </div>
-
-            <div class="product-field">
-              <strong>Sous-catégorie:</strong> {{ product.subCategory}}
-            </div>
-          </div>
-        </li>
-      </ul>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Code Produit</th>
+          <th scope="col">Description</th>
+          <th scope="col">Prix de base</th>
+          <th scope="col">Quantité</th>
+          <th scope="col">Sous-catégorie</th>
+          <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products">
+          <td>{{ product.codeProduit }}</td>
+          <td>{{ product.description }}</td>
+          <td>{{ product.basicPrice }}</td>
+          <td>{{ product.quantity }}</td>
+          <td>{{ product.subCategory }}</td>
+          <td>
+            <button type="button" class="btn btn-sm btn-primary">
+              <i class="bi bi-pencil"></i> Éditer
+            </button>
+            <button type="button" class="btn btn-sm btn-danger ms-1">
+              <i class="bi bi-trash"></i> Supprimer
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
       <pagination-controls (pageChange)="onPageChange($event)" [currentPage]="currentPage" [itemsPerPage]="itemsPerPage" [totalItems]="totalItems"></pagination-controls>
     </div>
   </div>
