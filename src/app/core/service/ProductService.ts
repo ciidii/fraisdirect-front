@@ -19,6 +19,7 @@ export class ProductService {
       );
   }
 
+
   private handleError(error: any) {
     console.error('Erreur dans le service ProductService :', error);
     return throwError(error);
