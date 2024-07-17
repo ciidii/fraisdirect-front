@@ -1,0 +1,13 @@
+.card-img-small {
+  width: 150px;
+  height: auto;
+  object-fit: cover;
+}
+
+.card {
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  margin-bottom: 10px;
+}

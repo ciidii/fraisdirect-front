@@ -48,7 +48,7 @@
         <div class="col-md-4 mb-4" *ngFor="let product of paginatedProducts(sc.subCategoryID)">
           <div class="card h-100 border-0 shadow-sm">
             <a (click)="handleDescription(product.productID)">
-              <img [src]="formatImage(product.images[0])" class="card-img-top fixed-height" alt="{{ product.description }}">
+              <img [src]="utilsService.formatImage(product.images[0])" class="card-img-top fixed-height" alt="{{ product.description }}">
             </a>
             <div class="card-body">
               <h5 class="card-title">{{ product.name }}</h5>
@@ -57,9 +57,9 @@
                 <span class="font-weight-bold">
                   Prix : {{ product.productPrice.priceModel == "WEIGHT" ? (product.productPrice.basedPriceID.wight  + ' kg /'+product.productPrice.basedPriceID.price +'F CFA') : (product.productPrice.basedPriceID.price + ' F CFA /'+product.productPrice.basedPriceID.quantity+' unité') }}
                 </span>
-                <a href="#" class="btn btn-outline-success d-flex align-items-center">
+                <button (click)="addCart(product)" class="btn btn-outline-success d-flex align-items-center">
                   <i class="bi bi-cart-plus me-2"></i>
-                </a>
+                </button>
               </div>
             </div>
           </div>

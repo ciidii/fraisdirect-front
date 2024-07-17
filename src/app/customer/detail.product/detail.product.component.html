@@ -8,7 +8,7 @@
   <div class="row">
     <!-- Image du produit -->
     <div class="col-md-6">
-      <img [src]="formatImage(product.images[0])" class="img-fluid" alt="Pomme">
+      <img [src]="utilsService.formatImage(product.images[0])" class="img-fluid" alt="Pomme">
     </div>
     <!-- Détails du produit -->
     <div class="col-md-6">
@@ -23,6 +23,9 @@
       <hr>
       <h6>Catégorie: {{product.subCategoryResponseDTO.category.nameCategory}}</h6>
       <p>{{product.subCategoryResponseDTO.category.descriptionCategory}}</p>
+      <button (click)="addCart(product)" class="btn btn-outline-success d-flex align-items-center">
+        <i class="bi bi-cart-plus me-2"></i>
+      </button>
     </div>
   </div>
 </div>

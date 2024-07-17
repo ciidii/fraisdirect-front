@@ -1,0 +1,24 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Cart</h1>
+
+<div *ngFor="let product of cartService.getItems()" class="card">
+  <img [src]="utilsService.formatImage(product.images[0])" class="card-img-top card-img-small" alt="{{product.name}}">
+  <div class="card-body">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text">{{product.description}}</p>
+    <p class="card-text">Price: {{product.basicPrice}}</p>
+    <p class="card-text">Quantity: {{product.quantity}}</p>
+    <div class="btn-group" role="group">
+      <button (click)="onDecreaseQuantity(product.productID)" class="btn btn-secondary">-</button>
+      <button (click)="onIncreaseQuantity(product.productID)" class="btn btn-secondary">+</button>
+    </div>
+    <div class="btn-group">
+      <button (click)="onRemoveFromCart(product)" class="btn btn-danger">Remove</button>
+    </div>
+  </div>
+</div>
