@@ -17,6 +17,7 @@
   margin-right: 15px; /* Ajustez la valeur selon vos besoins */
 }
 
+
 /* Optionnel : Supprimer la marge du dernier élément */
 .navbar-nav .nav-item:last-child .nav-spacing {
   margin-right: 0;

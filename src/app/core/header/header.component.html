@@ -24,7 +24,8 @@
           <ul class="dropdown-menu" aria-labelledby="gestionProduitsDropdown">
             <li><a class="dropdown-item" [routerLink]="['/shopkeeper/product']">Ajouter Produit</a></li>
             <li><a class="dropdown-item" [routerLink]="['/shopkeeper/gestionprod']">Liste des Produits</a></li>
-            <!-- Ajoutez d'autres options de gestion des produits ici si nécessaire -->
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/confproduct']">Configuration par Prix</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/confquantiteweight']">Configuration par Quantité</a></li>
           </ul>
         </li>
         <li class="nav-item">
@@ -47,7 +48,7 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="profileDropdown">
             <li><a class="dropdown-item" [routerLink]="['/customer/create-account']">Créer un compte</a></li>
-            <li><a class="dropdown-item" href="#">Se connecter</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/customer/authentification']">Se Connecter</a></li>
           </ul>
         </li>
         <li class="nav-item">

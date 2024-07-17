@@ -1,13 +1,21 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produits Locaux</title>
+</head>
+<body>
+
 <div class="container">
   <div class="row">
-    <h1 class="text-center para">Bienvenue sur FraisDirect</h1>
-    <div class="col-md-12">
+    <div class="col-12">
       <div class="card mb-4 border-0">
         <div class="row no-gutters">
-          <div class="col-md-4">
+          <div class="col-md-4 col-sm-12">
             <img src="/assets/images/panier.jpg" class="card-img" alt="Produits locaux">
           </div>
-          <div class="col-md-8">
+          <div class="col-md-8 col-sm-12">
             <div class="card-body">
               <p class="card-text mt-3 letext">
                 Votre plateforme en ligne dédiée à la valorisation des produits locaux et à la mise en avant des vendeurs de légumes de votre région.
@@ -20,10 +28,11 @@
       </div>
     </div>
   </div>
+
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Catégories</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -36,16 +45,17 @@
     </div>
   </nav>
   <br>
+
   <div *ngFor="let sc of subcategories" class="row">
-    <h3>{{sc.nameSubCategory}}</h3>
-    <div class="col-md-1 d-flex align-items-center justify-content-center">
+    <h3 class="col-12">{{sc.nameSubCategory}}</h3>
+    <div class="col-1 d-flex align-items-center justify-content-center">
       <button class="btn-arrow btn-arrow-left" (click)="previousPage(sc.subCategoryID)" [disabled]="paginationStates[sc.subCategoryID].currentPage === 0">
         <i class="bi bi-caret-left-square-fill"></i>
       </button>
     </div>
-    <div class="col-md-10">
+    <div class="col-10">
       <div class="row">
-        <div class="col-md-4 mb-4" *ngFor="let product of paginatedProducts(sc.subCategoryID)">
+        <div class="col-md-4 col-sm-6 col-12 mb-4" *ngFor="let product of paginatedProducts(sc.subCategoryID)">
           <div class="card h-100 border-0 shadow-sm">
             <a (click)="handleDescription(product.productID)">
               <img [src]="utilsService.formatImage(product.images[0])" class="card-img-top fixed-height" alt="{{ product.description }}">
@@ -66,11 +76,18 @@
         </div>
       </div>
     </div>
-    <div class="col-md-1 d-flex align-items-center justify-content-center">
+    <div class="col-1 d-flex align-items-center justify-content-center">
       <button class="btn-arrow btn-arrow-right" (click)="nextPage(sc.subCategoryID)" [disabled]="(paginationStates[sc.subCategoryID].currentPage + 1) * paginationStates[sc.subCategoryID].itemsPerPage >= (productsBySubCategory[sc.subCategoryID].length || 0)">
         <i class="bi bi-caret-right-square-fill"></i>
       </button>
     </div>
   </div>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
 
