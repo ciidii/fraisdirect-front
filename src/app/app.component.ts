@@ -5,6 +5,8 @@ import {SpinnerComponent} from "./core/spinner/spinner.component";
 import {NgxSpinnerComponent} from "ngx-spinner";
 import {CommonModule} from "@angular/common";
 import {FooterComponent} from "./core/footer/footer.component";
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, SpinnerComponent, CommonModule, NgxSpinnerComponent, FooterComponent],

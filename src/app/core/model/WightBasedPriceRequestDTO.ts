@@ -1,8 +1,8 @@
-import {AROUND} from "./AROUND";
+import { AROUND } from "./AROUND";
 
 export interface WightBasedPriceRequestDTO {
   label: string;
-  wight: number;
+  weight: number;
   price: number;
   around: AROUND;
 }
