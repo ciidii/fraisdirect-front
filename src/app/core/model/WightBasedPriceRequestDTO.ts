@@ -2,7 +2,7 @@ import { AROUND } from "./AROUND";
 
 export interface WightBasedPriceRequestDTO {
   label: string;
-  weight: number;
+  wight: number;
   price: number;
   around: AROUND;
 }

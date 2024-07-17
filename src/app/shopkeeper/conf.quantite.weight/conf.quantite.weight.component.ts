@@ -8,21 +8,23 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./conf.quantite.weight.component.css'],
   standalone: true,
   imports: [
-    FormsModule 
+    FormsModule
   ],
 })
 export class ConfQuantiteWeightComponent {
   label: string = '';
-  weight: number = 0;
+  wight: number = 0; // Correction orthographique ici
   price: number = 0;
   around: string = '';
 
-  constructor(private priceService: PriceService) {}
+  constructor(private priceService: PriceService) {
+    console.log('Valeur de weight dans le constructeur :', this.wight);
+  }
 
   submitForm(): void {
     const request = {
       label: this.label,
-      weight: this.weight,
+      weight: this.wight, // Utilisation correcte de 'weight'
       price: this.price,
       around: this.around
     };
@@ -36,13 +38,13 @@ export class ConfQuantiteWeightComponent {
       error => {
         console.error('Erreur lors de la création du prix basé sur le poids : ', error);
         // Ici, vous pouvez ajouter une logique pour afficher un message d'erreur à l'utilisateur
+        console.log('Wight :', this.wight);
       }
     );
   }
 
   resetForm(): void {
     this.label = '';
-    this.weight = 0;
     this.price = 0;
     this.around = '';
   }
