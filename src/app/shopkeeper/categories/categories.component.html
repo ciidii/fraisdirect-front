@@ -1,0 +1,13 @@
+<form (ngSubmit)="onSubmit()" #categoryForm="ngForm" class="category-form">
+  <div>
+    <label for="nameCategory">Nom de la catégorie</label>
+    <input type="text" id="nameCategory" name="nameCategory" [(ngModel)]="category.nameCategory" required>
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" name="description" [(ngModel)]="category.description" required></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit">Ajouter</button>
+</form>

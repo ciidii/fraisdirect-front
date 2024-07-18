@@ -1,0 +1,23 @@
+<div *ngIf="attributes">
+  <h2>Liste des Attributs</h2>
+  <ul>
+    <li *ngFor="let attribute of attributes">
+      <strong>{{ attribute.attributeName }}</strong> - {{ attribute.attributeDescription }}
+    </li>
+  </ul>
+
+  <h2>Ajouter un nouvel attribut de sous-catégorie</h2>
+  <form (ngSubmit)="onSubmit(subCategoryAttributesForm)" #subCategoryAttributesForm="ngForm" class="category-form">
+    <div>
+      <label for="attributeId">Attribute ID</label>
+      <input type="number" id="attributeId" name="attributeId" [(ngModel)]="subCategoryAttributes.subCategoryAttributeKey.attributeId" required>
+    </div>
+
+    <div>
+      <label for="categoryId">Category ID</label>
+      <input type="number" id="categoryId" name="categoryId" [(ngModel)]="subCategoryAttributes.subCategoryAttributeKey.categoryId" required>
+    </div>
+
+    <button type="submit" class="btn-submit">Ajouter</button>
+  </form>
+</div>
