@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf} from "@angular/common";
+import {NgForOf, NgIf, SlicePipe} from "@angular/common";
 import {CategoryResponseDTO} from "../../core/model/CategoryResponseDTO";
 import {CategoryService} from "../../core/service/categoryService";
 import {RequestPageableVO} from "../../core/model/RequestPageableVO";
@@ -17,7 +17,9 @@ import {UtilsService} from "../../core/service/utils.service";
   standalone: true,
   imports: [
     NgForOf,
-    RouterLink
+    RouterLink,
+    SlicePipe,
+    NgIf
   ],
   templateUrl: './presentation-page.component.html',
   styleUrls: ['./presentation-page.component.css']
@@ -34,7 +36,7 @@ export class PresentationPageComponent implements OnInit {
     private route: Router,
     private priceService: PriceService,
     private cartService: CartService,
-     public utilsService: UtilsService
+    public utilsService: UtilsService
   ) {
   }
 
@@ -120,12 +122,23 @@ export class PresentationPageComponent implements OnInit {
   }
 
 
-
   handleDescription(productID: number) {
     this.route.navigateByUrl(`/product-details/${productID}`);
   }
 
   addCart(product: any) {
     this.cartService.addToCart(product);
+  }
+
+  productAdded(product: ProductResponseDTO) {
+    return this.cartService.checkIfProductAdded(product)
+  }
+
+  onDecreaseQuantity(productID: any) {
+    return this.cartService.decrementQuantity(productID)
+  }
+
+  onIncreaseQuantity(productID: any) {
+    return this.cartService.increaseQuantity(productID)
   }
 }

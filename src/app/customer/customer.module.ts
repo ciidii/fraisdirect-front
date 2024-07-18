@@ -1,9 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {CustomerRoutes} from "./customer.routes";
-import {BrowserModule} from "@angular/platform-browser";
 import {NgxPaginationModule} from "ngx-pagination";
-
 
 
 @NgModule({
@@ -12,7 +10,7 @@ import {NgxPaginationModule} from "ngx-pagination";
     CommonModule,
     NgxPaginationModule
   ],
-  exports:[CustomerRoutes]
+  exports: [CustomerRoutes]
 })
 export class CustomerModule {
 

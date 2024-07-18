@@ -83,7 +83,7 @@ export class ValidateAccountComponent {
         this.loading = false;
         this.setCodeInputColor('success');
         setTimeout(() => {
-          this.router.navigate(['/success']);
+          this.router.navigate(['/login']);
         }, 1000);
       },
       error: (error) => {

@@ -1,7 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {JsonPipe, NgForOf} from "@angular/common";
 import {CartService} from "../../core/service/cart.service";
 import {UtilsService} from "../../core/service/utils.service";
+import {ProductResponseDTO} from "../../core/model/ProductResponseDTO";
 
 @Component({
   selector: 'app-cart',
@@ -13,23 +14,32 @@ import {UtilsService} from "../../core/service/utils.service";
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css'
 })
-export class CartComponent implements OnInit{
-  constructor(public cartService:CartService,public utilsService:UtilsService) {
+export class CartComponent implements OnInit {
+
+  constructor(public cartService: CartService,
+              public utilsService: UtilsService,
+              ) {
   }
 
   ngOnInit(): void {
   }
 
-  onDecreaseQuantity(productID:number) {
+  onDecreaseQuantity(productID: number) {
     this.cartService.decrementQuantity(productID)
   }
 
-  onIncreaseQuantity(productID:number) {
+  onIncreaseQuantity(productID: number) {
     this.cartService.increaseQuantity(productID)
+  }
+  computeProductPrice(product: ProductResponseDTO): number {
+    return this.cartService.computeProductPrice(product)
   }
 
 
-  onRemoveFromCart(product:any) {
+  onRemoveFromCart(product: any) {
     this.cartService.deleteItems(product)
+  }
+
+  onOrder() {
   }
 }

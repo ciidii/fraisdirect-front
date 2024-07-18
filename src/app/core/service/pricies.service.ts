@@ -18,4 +18,5 @@ export class PriceService {
     }
     return this.http.get<ResponseEntityApi<ProductPriceDTO<any>>>(this.environment.url + "product-price/product-price", options);
   }
+
 }

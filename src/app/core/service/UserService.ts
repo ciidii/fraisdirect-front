@@ -24,4 +24,12 @@ export class UserService {
     };
     return this.http.post<ResponseEntityApi<any>>(this.environment.url+`activation`,{}, options);
   }
+
+  getUserByIdentifier(identifier: string) {
+      let options = {
+        headers: new HttpHeaders().set("Content-Type", "application/json"),
+        params: new HttpParams().set("email", identifier)
+      };
+      return this.http.get<ResponseEntityApi<User>>(this.environment.url+"user", options);
+    }
 }
