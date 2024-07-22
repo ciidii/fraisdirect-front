@@ -44,7 +44,6 @@ export class LoginService{
           this.authenticatedUserState.user = user.data;
           this.redirectToTheRightPage(this.authenticatedUserState)
           window.localStorage.setItem("bearer", this.accessToken);
-          console.log(this.authenticatedUserState)
         }, error: err => {
           console.log(err);
         }
@@ -56,7 +55,7 @@ export class LoginService{
     if (authenticatedUserState.authenticated && authenticatedUserState.user.role.libelle=="CLIENT"){
       this.router.navigateByUrl("/customer")
     }else if (authenticatedUserState.authenticated && authenticatedUserState.user.role.libelle=="BOUTIQUIER"){
-      this.router.navigateByUrl("/shopkeeper/gestionprod")
+      this.router.navigateByUrl("/customer")
     }
   }
   logout() {

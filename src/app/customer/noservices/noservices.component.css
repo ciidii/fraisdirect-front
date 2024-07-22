@@ -19,7 +19,7 @@
   transform: scale(1.05);
 }
 .hero-section {
-  background: url('/assets/images/hero6.jpg') no-repeat center center;
+  background: url('/src/assets/images/hero6.jpg') no-repeat center center;
   background-size: cover;
   color: white;
   padding: 100px 0;

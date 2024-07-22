@@ -1,4 +1,4 @@
-import {AROUND} from "./AROUND";
+import { AROUND } from "./AROUND";
 
 export interface WightBasedPriceRequestDTO {
   label: string;

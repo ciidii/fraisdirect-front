@@ -5,6 +5,9 @@ import {SpinnerComponent} from "./core/spinner/spinner.component";
 import {NgxSpinnerComponent} from "ngx-spinner";
 import {CommonModule} from "@angular/common";
 import {FooterComponent} from "./core/footer/footer.component";
+import {LoginService} from "./core/service/login.service";
+
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, SpinnerComponent, CommonModule, NgxSpinnerComponent, FooterComponent],
@@ -14,9 +17,9 @@ import {FooterComponent} from "./core/footer/footer.component";
 })
 export class AppComponent implements OnInit{
   title = 'fraisdirect-frontend';
-  constructor(private router: Router) {
+  constructor(private router: Router,private authService:LoginService) {
   }
   ngOnInit(): void {
-    this.router.navigateByUrl("/customer")
+    this.authService.loadJwtTokenFromLocalStorage()
   }
 }

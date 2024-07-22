@@ -11,6 +11,7 @@ import {Router, RouterLink} from "@angular/router";
 import {PriceService} from "../../core/service/pricies.service";
 import {CartService} from "../../core/service/cart.service";
 import {UtilsService} from "../../core/service/utils.service";
+import {AuthState} from "../../core/model/AuthState";
 
 @Component({
   selector: 'app-presentation-page',
@@ -36,11 +37,13 @@ export class PresentationPageComponent implements OnInit {
     private route: Router,
     private priceService: PriceService,
     private cartService: CartService,
-    public utilsService: UtilsService
+    public utilsService: UtilsService,
+    private authState: AuthState
   ) {
   }
 
   ngOnInit(): void {
+    console.log(this.authState)
     this.categoryService.getCategories().subscribe({
       next: response => {
         this.categories = response.data;

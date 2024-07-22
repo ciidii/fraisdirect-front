@@ -17,6 +17,7 @@ import {Router} from "@angular/router";
 })
 export class CreateAccountComponent implements OnInit {
   userForm!: FormGroup;
+  role={libelle:"CLIENT"}
 
   constructor(private fb: FormBuilder,
               private userService: UserService,
@@ -44,7 +45,6 @@ export class CreateAccountComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.toaster.success("Compter créer à succées","info")
     this.userForm = this.fb.group({
       nom: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -52,6 +52,7 @@ export class CreateAccountComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       address: ['', Validators.required],
       phoneNumber: ['', Validators.required],
+      role:[this.role]
     }, {validator: this.passwordMatchValidator});
 
   }

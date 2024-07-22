@@ -1,35 +1,49 @@
-body {
-  background-color: #f7f7f7;
-  font-family: Arial, sans-serif;
+/* conf.quantite.weight.component.css */
+
+/* Style général du formulaire */
+form {
+  max-width: 400px;
+  margin: 70px auto 0; /* 40px en haut, centré horizontalement */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
 }
-.container {
-  max-width: 600px;
-  background-color: #fff;
-  padding: 30px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+/* Style des divs contenant les champs */
+div {
+  margin-bottom: 10px;
 }
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-.form-group label {
+
+/* Style des labels */
+label {
+  display: block;
   font-weight: bold;
-  color: #555;
+  margin-bottom: 5px;
 }
-.form-control {
+
+/* Style des inputs et selects */
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
   border-radius: 4px;
-  border: 1px solid #ddd;
+  box-sizing: border-box; /* Pour inclure le padding dans la largeur */
 }
-.btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  border-radius: 4px;
+
+/* Style du bouton Soumettre */
+button[type="submit"] {
+  background-color: #4CAF50; /* Couleur de fond verte */
+  color: white; /* Couleur du texte blanche */
   padding: 10px 20px;
-  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #004085;
+
+/* Hover du bouton Soumettre */
+button[type="submit"]:hover {
+  background-color: #45a049; /* Couleur de fond verte foncée */
 }

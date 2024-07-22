@@ -2,12 +2,13 @@ import {User} from "./User";
 import {Injectable} from "@angular/core";
 
 @Injectable({
-  providedIn:"root"
+  providedIn: "root"
 })
 export class AuthState {
   private _authenticated: boolean = false;
   private _token!: any;
   private _user: any;
+
   constructor() {
     this._authenticated = false;
     this._token = null;
@@ -20,6 +21,28 @@ export class AuthState {
 
   set authenticated(value: boolean) {
     this._authenticated = value;
+  }
+
+  public isShopKeeper() {
+    let isShopKeeper = false;
+    if (this.authenticated) {
+
+      if (this.user.role.libelle == "BOUTIQUIER") {
+        isShopKeeper = true;
+      }
+    }
+    return isShopKeeper;
+  }
+
+  public isCustomer() {
+    let isCustomer = false;
+    if (this.authenticated) {
+
+      if (this.user.role.libelle == "CLIENT") {
+        isCustomer = true;
+      }
+    }
+    return isCustomer;
   }
 
   get token(): string {

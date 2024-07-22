@@ -6,11 +6,15 @@ import {ValidateAccountComponent} from "./validate.account/validate.account.comp
 import {DetailProductComponent} from "./detail.product/detail.product.component";
 import {AuthentificationComponent} from "./authentification/authentification.component";
 import {CartComponent} from "./cart/cart.component";
+import {NoservicesComponent} from "./noservices/noservices.component";
+import {ContactComponent} from "./contact/contact.component";
  const routesCuster:Routes=[
   {path:"",component:PresentationPageComponent},
    {path:"create-account",component:CreateAccountComponent},
    {path:"validate",component:ValidateAccountComponent},
    {path:"product-details/:product-id",component:DetailProductComponent},
+   {path:"noservices",component:NoservicesComponent},
+   {path:"contact",component:ContactComponent},
    {path:"cart",component: CartComponent},
    {path:"login",component: AuthentificationComponent},
 ];
