@@ -1,9 +1,9 @@
 import {AROUND} from "./AROUND";
 
-export interface QuantityBasedPriceResponseDTO {
-  id?: number;
+export interface WightBasedPriceResponseDTO {
+  id: number;
   label: string;
-  quantity: number;
+  wight: number;
   price: number;
   around: AROUND;
 }

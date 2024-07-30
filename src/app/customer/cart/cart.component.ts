@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { JsonPipe, NgForOf } from "@angular/common";
-import { CartService } from "../../core/service/cart.service";
-import { UtilsService } from "../../core/service/utils.service";
-import { ProductResponseDTO } from "../../core/model/ProductResponseDTO";
-import { OrderRequestDTO } from "../../core/model/OrderRequestDTO";
-import { ORDER_STATE } from "../../core/model/ORDER_STATE";
-import { OrderDetailsRequestDTO } from "../../core/model/OrderDetailsRequestDTO";
-import { AuthState } from "../../core/model/AuthState";
-import { Router } from "@angular/router";
-import { ToastrService } from "ngx-toastr";
-import { OrderService } from "../../core/service/OrderService";
+import {Component, OnInit} from '@angular/core';
+import {JsonPipe, NgForOf} from "@angular/common";
+import {CartService} from "../../core/service/cart.service";
+import {UtilsService} from "../../core/service/utils.service";
+import {ProductResponseDTO} from "../../core/model/ProductResponseDTO";
+import {OrderRequestDTO} from "../../core/model/OrderRequestDTO";
+import {ORDER_STATE} from "../../core/model/ORDER_STATE";
+import {AuthState} from "../../core/model/AuthState";
+import {Router} from "@angular/router";
+import {ToastrService} from "ngx-toastr";
+import {OrderService} from "../../core/service/OrderService";
 
 @Component({
   selector: 'app-cart',
@@ -19,10 +18,11 @@ import { OrderService } from "../../core/service/OrderService";
     NgForOf
   ],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'] // Correction de 'styleUrl' en 'styleUrls'
+  styleUrls: ['./cart.component.css']
+
 })
 export class CartComponent implements OnInit {
-  private orderRequestDTO: OrderRequestDTO;
+   private  orderRequestDTO: OrderRequestDTO;
 
   constructor(
     public cartService: CartService,
@@ -79,7 +79,7 @@ export class CartComponent implements OnInit {
   prepareOrder() {
     let cart = this.cartService.getItems();
     this.orderRequestDTO.orderState = ORDER_STATE.PENDING;
-    this.orderRequestDTO.orderDetails = []; // Initialisation de orderDetails comme un tableau vide
+    this.orderRequestDTO.orderDetails = [];
     cart.forEach((cartElm) => {
       let orderDetail: { quantity: number; productID: number } = {
         productID: cartElm.productID,

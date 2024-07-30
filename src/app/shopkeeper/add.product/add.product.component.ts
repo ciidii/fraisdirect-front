@@ -1,10 +1,10 @@
-import {SubCategory} from "../../core/model/SubCategory";
 import {ProductService} from "../../core/service/ProductService";
 import {Component, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {CategoryService} from "../../core/service/categoryService";
 import {SubCategoryResponseDTO} from "../../core/model/SubCategoryResponseDTO";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-add-product',
@@ -18,7 +18,11 @@ export class AddProductComponent implements OnInit {
   subCategories!: Array<SubCategoryResponseDTO>;
   images!: File[];
 
-  constructor(private fb: FormBuilder, private productService: ProductService, private categoryService: CategoryService) {
+  constructor(private fb: FormBuilder,
+              private productService: ProductService,
+              private categoryService: CategoryService,
+              private toaster: ToastrService
+  ) {
   }
 
   ngOnInit(): void {
@@ -36,7 +40,7 @@ export class AddProductComponent implements OnInit {
       next: data => {
         this.subCategories = data.data;
       },
-      error:err => {
+      error: err => {
         console.log(err);
       }
     })
@@ -69,11 +73,11 @@ export class AddProductComponent implements OnInit {
 
       this.productService.addProduct(formData).subscribe({
         next: response => {
-          console.log(response);
+          this.toaster.success("Produit ajouter avec succés")
           this.productForm.reset();
         },
         error: err => {
-          console.log(err);
+          this.toaster.error("Produit non ajouté")
         }
       });
     } else {

@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {NgForOf, NgIf, SlicePipe} from "@angular/common";
+import {JsonPipe, NgForOf, NgIf, SlicePipe} from "@angular/common";
 import {CategoryResponseDTO} from "../../core/model/CategoryResponseDTO";
 import {CategoryService} from "../../core/service/categoryService";
 import {RequestPageableVO} from "../../core/model/RequestPageableVO";
@@ -8,11 +8,10 @@ import {PaginationState} from "../../core/model/PaginationState";
 import {CatalogueService} from "../../core/service/catalogue.service";
 import {ProductResponseDTO} from "../../core/model/ProductResponseDTO";
 import {Router, RouterLink} from "@angular/router";
-import {PriceService} from "../../core/service/pricies.service";
 import {CartService} from "../../core/service/cart.service";
 import {UtilsService} from "../../core/service/utils.service";
 import {AuthState} from "../../core/model/AuthState";
-
+import {ProductPriceService} from "../../core/service/product-price.service";
 @Component({
   selector: 'app-presentation-page',
   standalone: true,
@@ -20,7 +19,8 @@ import {AuthState} from "../../core/model/AuthState";
     NgForOf,
     RouterLink,
     SlicePipe,
-    NgIf
+    NgIf,
+    JsonPipe
   ],
   templateUrl: './presentation-page.component.html',
   styleUrls: ['./presentation-page.component.css']
@@ -35,7 +35,7 @@ export class PresentationPageComponent implements OnInit {
     private categoryService: CategoryService,
     private catalogueService: CatalogueService,
     private route: Router,
-    private priceService: PriceService,
+    private priceService: ProductPriceService,
     private cartService: CartService,
     public utilsService: UtilsService,
     private authState: AuthState
@@ -123,7 +123,6 @@ export class PresentationPageComponent implements OnInit {
       }
     });
   }
-
 
   handleDescription(productID: number) {
     this.route.navigateByUrl(`/product-details/${productID}`);

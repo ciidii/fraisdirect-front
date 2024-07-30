@@ -1,5 +1,9 @@
-export class SubCategory {
-    subCategoryID!:number
-    nameSubCategory!:string
-    descriptionSubCategory!:string
+import {CategoryResponseDTO} from "./CategoryResponseDTO";
+import {AttributeResponseDTO} from "./AttributeResponseDTO";
+
+export interface SubCategoryRequestDTO {
+  nameSubCategory: string;
+  descriptionSubCategory: string;
+  category: CategoryResponseDTO;
+  attributes: AttributeResponseDTO[];
 }

@@ -15,20 +15,19 @@
           <p class="card-text">
             <strong>Prix:</strong>
             {{ product.productPrice?.priceModel == "WEIGHT"
-            ? (product.productPrice?.basedPriceID?.weight + ' kg /' + product.productPrice?.basedPriceID?.price + ' F CFA')
+            ? (product.productPrice?.basedPriceID?.weight + ' Kg /' + product.productPrice?.basedPriceID?.price + ' F CFA')
             : (product.productPrice?.basedPriceID?.price + ' F CFA /' + product.productPrice?.basedPriceID?.quantity + ' unité') }}
           </p>
           <p class="card-text">
             <strong>Total prix:</strong> {{ computeProductPrice(product) }}
           </p>
           <p class="card-text">
-            <strong>{{ product.productPrice?.priceModel == "WEIGHT" ? ' kg /' : ' unité' }}:</strong> {{ product.quantity }}
+            <strong>{{ product.productPrice?.priceModel == "WEIGHT" ? ' Kg /' : ' unité' }}:</strong> {{ product.quantity }}
           </p>
           <div class="btn-group mb-2" role="group">
             <button (click)=" onDecreaseQuantity(product.productID)" class="btn btn-warning m-1">-</button>
             <button (click)="onIncreaseQuantity(product.productID)" class="btn btn-success m-1">+</button>
             <button (click)="onRemoveFromCart(product)" class="btn btn-danger m-1"><i class="bi bi-trash3"></i></button>
-
           </div>
         </div>
       </div>

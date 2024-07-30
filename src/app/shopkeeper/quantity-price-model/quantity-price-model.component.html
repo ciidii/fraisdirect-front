@@ -1,0 +1,22 @@
+<form (submit)="submitForm()" class="container mt-5">
+  <div class="mb-3">
+    <label for="label" class="form-label">Label du produit:</label>
+    <input type="text" class="form-control" id="label" name="label" [(ngModel)]="label" required>
+  </div>
+  <div class="mb-3">
+    <label for="wight" class="form-label">Lot</label>
+    <input type="number" class="form-control" id="wight" name="quantity" [(ngModel)]="quantity" required>
+  </div>
+  <div class="mb-3">
+    <label for="price" class="form-label">Prix du produit:</label>
+    <input type="number" class="form-control" id="price" name="price" [(ngModel)]="price" required>
+  </div>
+  <div class="mb-3">
+    <label for="around" class="form-label">Arrondir:</label>
+    <select class="form-select" id="around" name="around" [(ngModel)]="around" required>
+      <option value="UP">Supérieur</option>
+      <option value="DOWN">Inférieur</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary">Soumettre</button>
+</form>

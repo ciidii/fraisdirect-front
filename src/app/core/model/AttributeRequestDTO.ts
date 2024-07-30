@@ -1,5 +1,4 @@
-export interface Attribute {
-  attributeID?: number; 
+export interface AttributeRequestDTO {
   attributeName: string;
   attributeDescription: string;
 }

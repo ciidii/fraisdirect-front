@@ -1,22 +1,23 @@
-import { Injectable } from '@angular/core';
-import { ProductResponseDTO } from "../model/ProductResponseDTO";
-import { PriceService } from "./pricies.service";
+import {Injectable} from '@angular/core';
+import {ProductResponseDTO} from "../model/ProductResponseDTO";
+import {ProductPriceService} from "./product-price.service";
+import {AuthState} from "../model/AuthState";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
-  private items: ProductResponseDTO[] = JSON.parse(localStorage.getItem("cardItems") || '[]');
+  private items: ProductResponseDTO[] = JSON.parse(localStorage.getItem("cardItems"+'cardItems'+this.authState.user?.id) || '[]');
 
-  constructor(private priceService: PriceService) {
+  constructor(private priceService: ProductPriceService,private authState:AuthState) {
     this.items.forEach(item => this.loadProductPrice(item));
   }
 
   addToCart(product: ProductResponseDTO) {
     if (!this.checkIfProductAdded(product)) {
-      this.items.push({ ...product, quantity: 1 });
+      this.items.push({...product, quantity: 1});
       this.loadProductPrice(product);
-      localStorage.setItem('cardItems', JSON.stringify(this.items));
+      localStorage.setItem('cardItems'+this.authState.user.id, JSON.stringify(this.items));
     }
   }
 
@@ -41,7 +42,7 @@ export class CartService {
 
   deleteItems(product: ProductResponseDTO) {
     this.items = this.items.filter(i => i.productID !== product.productID);
-    localStorage.setItem('cardItems', JSON.stringify(this.items));
+    localStorage.setItem('cardItems'+this.authState.user.id, JSON.stringify(this.items));
   }
 
   increaseQuantity(productID: number) {
@@ -49,7 +50,7 @@ export class CartService {
     if (item) {
       item.quantity++;
     }
-    localStorage.setItem('cardItems', JSON.stringify(this.items));
+    localStorage.setItem('cardItems'+this.authState.user.id, JSON.stringify(this.items));
   }
 
   decrementQuantity(productID: number) {
@@ -57,27 +58,30 @@ export class CartService {
     if (item && item.quantity > 1) {
       item.quantity--;
     }
-    localStorage.setItem('cardItems', JSON.stringify(this.items));
+    localStorage.setItem('cardItems'+this.authState.user.id, JSON.stringify(this.items));
   }
 
   computeProductPrice(product: ProductResponseDTO): number {
     let productTotalPrice = 0;
     if (product.productPrice && product.productPrice.basedPriceID) {
       if (product.productPrice.priceModel === "WEIGHT") {
-        productTotalPrice = (product.productPrice.basedPriceID.price * product.quantity) / product.productPrice.basedPriceID.weight;
+        productTotalPrice = (product.productPrice.basedPriceID.price * product.quantity) / product.productPrice.basedPriceID.wight;
       } else if (product.productPrice.priceModel === "QUANTITY") {
-        productTotalPrice = (product.productPrice.basedPriceID.price * product.quantity)/product.productPrice?.basedPriceID?.quantity ;
+        console.log(product.productPrice.basedPriceID.price);
+        productTotalPrice = (product.productPrice.basedPriceID.price * product.quantity) / product.productPrice.basedPriceID.quantity;
       }
     }
     return productTotalPrice;
   }
-  computeTotalCart(){
+
+  computeTotalCart() {
     let totalCart = 0;
-    this.items.forEach((item)=>{
+    this.items.forEach((item) => {
       totalCart += this.computeProductPrice(item);
     })
     return totalCart;
   }
+
   checkIfProductAdded(product: ProductResponseDTO) {
     return this.items.some(item => item.productID === product.productID);
   }

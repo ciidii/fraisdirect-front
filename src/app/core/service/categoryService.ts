@@ -1,19 +1,21 @@
-import { Injectable } from "@angular/core";
-import { Environment } from "./environment.service";
-import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
-import { RequestPageableVO } from "../model/RequestPageableVO";
-import { CategoryResponseDTO } from "../model/CategoryResponseDTO";
-import { Observable } from "rxjs";
-import { ResponsePageableApi } from "../model/ResponsePageableApi";
-import { SubCategoryResponseDTO } from "../model/SubCategoryResponseDTO";
-import { ResponseEntityApi } from "../model/ResponseEntityApi";
-import { Category } from "../model/Category";
+import {Injectable} from "@angular/core";
+import {Environment} from "./environment.service";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {RequestPageableVO} from "../model/RequestPageableVO";
+import {CategoryResponseDTO} from "../model/CategoryResponseDTO";
+import {Observable} from "rxjs";
+import {ResponsePageableApi} from "../model/ResponsePageableApi";
+import {SubCategoryResponseDTO} from "../model/SubCategoryResponseDTO";
+import {ResponseEntityApi} from "../model/ResponseEntityApi";
+import {Category} from "../model/Category";
+import {AttributeResponseDTO} from "../model/AttributeResponseDTO";
 
-@Injectable({ providedIn: "root" })
+@Injectable({providedIn: "root"})
 export class CategoryService {
   private apiUrl = this.environment.url + "categories/";
 
-  constructor(private environment: Environment, private http: HttpClient) {}
+  constructor(private environment: Environment, private http: HttpClient) {
+  }
 
   public getCategories(): Observable<ResponseEntityApi<Array<CategoryResponseDTO>>> {
     let options = {
@@ -49,17 +51,14 @@ export class CategoryService {
     );
   }
 
+
   public createCategory(category: Category): Observable<Category> {
     let options = {
       headers: new HttpHeaders().set("Content-Type", "application/json"),
     };
-    return this.http.post<Category>(this.apiUrl + "create", category, options);
+    return this.http.post<Category>(this.environment.url + "categories", category, options);
   }
+
   // Méthode pour créer une sous-catégorie
-  public createSubCategory(subCategory: any): Observable<SubCategoryResponseDTO> {
-    let options = {
-      headers: new HttpHeaders().set("Content-Type", "application/json"),
-    };
-    return this.http.post<SubCategoryResponseDTO>(this.apiUrl + "subcategories/create", subCategory, options);
-  }
+
 }

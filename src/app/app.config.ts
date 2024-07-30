@@ -11,7 +11,7 @@ import {BrowserAnimationsModule, provideAnimations} from "@angular/platform-brow
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    provideToastr({positionClass:"toast-top-left"}),
+    provideToastr(),
     provideAnimations(),
     importProvidersFrom([BrowserAnimationsModule]),
     importProvidersFrom(CoreModule),
