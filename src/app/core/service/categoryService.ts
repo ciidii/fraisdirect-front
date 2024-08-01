@@ -56,10 +56,10 @@ export class CategoryService {
     return this.http.post<Category>(this.apiUrl + "create", category, options);
   }
   // Méthode pour créer une sous-catégorie
-  public createSubCategory(subCategory: any): Observable<SubCategoryResponseDTO> {
+  public createSubCategory(subCategory: SubCategoryResponseDTO): Observable<SubCategoryResponseDTO> {
     let options = {
       headers: new HttpHeaders().set("Content-Type", "application/json"),
     };
-    return this.http.post<SubCategoryResponseDTO>(this.apiUrl + "subcategories/create", subCategory, options);
+    return this.http.post<SubCategoryResponseDTO>(this.apiUrl + "subcategories/add", subCategory, options);
   }
 }

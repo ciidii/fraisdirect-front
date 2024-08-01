@@ -7,7 +7,7 @@ import { environment } from '../../environement';
   providedIn: 'root'
 })
 export class AttributeService {
-  private apiUrl = `${environment.apiUrl}/subcategories/attributes`;
+  private apiUrl = `${environment.apiUrl}/attributes`;
 
   constructor(private http: HttpClient) { }
 
@@ -22,5 +22,5 @@ export class AttributeService {
     return this.http.post<Attribute>(this.apiUrl, attribute, { headers });
   }
 
-  // Ajoutez d'autres méthodes selon vos besoins (update, delete, etc.)
+
 }

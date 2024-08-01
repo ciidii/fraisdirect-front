@@ -1,16 +1,13 @@
-<div class="centered-container">
- 
-  <form (ngSubmit)="onSubmit(subCategoryAttributesForm)" #subCategoryAttributesForm="ngForm" class="category-form">
-    <div>
-      <label for="attributeId">Attribute ID</label>
-      <input type="number" id="attributeId" name="attributeId" [(ngModel)]="subCategoryAttributes.subCategoryAttributeKey.attributeId" required>
-    </div>
+<form (ngSubmit)="onSubmit()" #attributesForm="ngForm" class="attribute-form">
+  <div>
+    <label for="attributeName">Nom de l'attribute</label>
+    <input type="text" id="attributeName" name="attributeName" [(ngModel)]="attributes.attributeName" required>
+  </div>
 
-    <div>
-      <label for="categoryId">Category ID</label>
-      <input type="number" id="categoryId" name="categoryId" [(ngModel)]="subCategoryAttributes.subCategoryAttributeKey.categoryId" required>
-    </div>
+  <div>
+    <label for="attributeDescription">Description</label>
+    <textarea id="attributeDescription" name="attributeDescription" [(ngModel)]="attributes.attributeDescription" required></textarea>
+  </div>
 
-    <button type="submit" class="btn-submit">Ajouter</button>
-  </form>
-</div>
+  <button type="submit" class="btn-submit">Ajouter</button>
+</form>

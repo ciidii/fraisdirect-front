@@ -1,52 +1,31 @@
-import {Attribute, Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Attribute } from '../../core/model/attribute';
 import { AttributeService } from '../../core/service/attribute.service';
-import { FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-attribute',
+  standalone: true,
+  imports: [FormsModule],
   templateUrl: './attribute.component.html',
-  styleUrls: ['./attribute.component.css'],
-  standalone: true, // Ajoutez cette ligne
-  imports: [
-    FormsModule
-  ]
+  styleUrl: './attribute.component.css'
 })
-export class AttributeComponent implements OnInit {
-  attributes: Attribute[] | undefined;
-  subCategoryAttributes = {
-    subCategoryAttributeKey: {
-      attributeId: 0,
-      categoryId: 0
-    }
+export class AttributeComponent  {
+  attributes: Attribute= {
+   attributeName: '',
+    attributeDescription:''
   };
-
-  constructor(private attributeService: AttributeService) { }
-
-  ngOnInit(): void {
-    this.loadAttributes();
-  }
-
-  loadAttributes(): void {
-    this.attributeService.getAllAttributes().subscribe(
-      attributes => {
-        this.attributes = attributes;
+  constructor( private attributeService:AttributeService) {}
+  
+  onSubmit()
+  {
+    this.attributeService.createAttribute(this.attributes).subscribe(
+      response => {
+        console.log('attributes ajoutée avec succès', response);
+        this.attributes = {attributeName: '', attributeDescription: '' }; // Réinitialiser le formulaire
       },
       error => {
-        console.error('Erreur lors du chargement des attributs', error);
-      }
-    );
-  }
-
-  onSubmit(form: NgForm): void {
-    this.attributeService.createAttribute(form.value).subscribe(
-      newAttribute => {
-        console.log('Attribut ajouté avec succès', newAttribute);
-        this.loadAttributes(); // Recharger la liste après l'ajout
-        form.reset(); // Réinitialiser le formulaire après soumission
-      },
-      error => {
-        console.error('Erreur lors de l\'ajout de l\'attribut', error);
+        console.error('Erreur lors de l\'ajout de la catégorie', error);
       }
     );
   }
