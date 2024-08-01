@@ -8,6 +8,8 @@ import {AuthentificationComponent} from "./authentification/authentification.com
 import {CartComponent} from "./cart/cart.component";
 import {NoservicesComponent} from "./noservices/noservices.component";
 import {ContactComponent} from "./contact/contact.component";
+import {ClientAddressComponent} from "./client.address/client.address.component";
+import {OrderConfirmationComponent} from "./order-confirmation/order-confirmation.component";
  const routesCuster:Routes=[
   {path:"",component:PresentationPageComponent},
    {path:"create-account",component:CreateAccountComponent},
@@ -17,6 +19,8 @@ import {ContactComponent} from "./contact/contact.component";
    {path:"contact",component:ContactComponent},
    {path:"cart",component: CartComponent},
    {path:"login",component: AuthentificationComponent},
+   {path:"address",component:ClientAddressComponent},
+   {path:"order-confirmation",component:OrderConfirmationComponent}
 ];
 
 @NgModule({

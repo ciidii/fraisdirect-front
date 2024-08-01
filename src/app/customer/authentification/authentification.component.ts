@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LoginService} from "../../core/service/login.service";
-import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
 import {UserService} from "../../core/service/UserService";
 import {ToastrService} from "ngx-toastr";
@@ -14,11 +14,11 @@ import {ToastrService} from "ngx-toastr";
   templateUrl: './authentification.component.html',
   styleUrl: './authentification.component.css'
 })
-export class AuthentificationComponent implements OnInit{
+export class AuthentificationComponent implements OnInit {
   formGroup!: FormGroup;
   errorMessage!: string;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private authService: LoginService, private userService: UserService,private toasterService:ToastrService) {
+  constructor(private formBuilder: FormBuilder, private router: Router, private authService: LoginService, private userService: UserService, private toasterService: ToastrService) {
   }
 
   ngOnInit(): void {
@@ -37,11 +37,11 @@ export class AuthentificationComponent implements OnInit{
       next: data => {
         this.authService.loadProfile(data);
       },
-      error:err => {
-        if (err.status==400){
-          this.errorMessage="Vérifier vos coordonées"
-        }else {
-          this.errorMessage="Un problème inattendu est survenue au niveau server veillez reéssez plustart"
+      error: err => {
+        if (err.status == 400) {
+          this.errorMessage = "Vérifier vos coordonées"
+        } else {
+          this.errorMessage = "Un problème inattendu est survenue au niveau server veillez reéssez plustart"
         }
       }
     })

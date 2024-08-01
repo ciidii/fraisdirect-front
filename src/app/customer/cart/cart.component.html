@@ -36,5 +36,5 @@
   <h5 class="mt-4">
     <strong>Total prix:</strong> {{ cartService.computeTotalCart() }} F CFA
   </h5>
-  <button [disabled]="!cartService.getItems().length" (click)="onOrder()" class="btn btn-success mt-3">Commandez</button>
+  <button [disabled]="!cartService.getItems().length" [routerLink]="['/customer/address']" class="btn btn-success mt-3">Commandez</button>
 </div>

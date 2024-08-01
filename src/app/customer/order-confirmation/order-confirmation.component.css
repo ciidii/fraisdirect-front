@@ -1,0 +1,40 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.card {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.card-body p {
+  margin-bottom: 0.5rem;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+}
+
+.btn-outline-secondary {
+  border-width: 2px;
+}
+
+.text-success {
+  font-size: 1.5rem;
+}
+
+.list-group-item {
+  background-color: #ffffff;
+  border: 1px solid #e9ecef;
+}
+
+.text-center {
+  margin-bottom: 2rem;
+}

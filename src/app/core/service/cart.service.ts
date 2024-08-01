@@ -7,7 +7,7 @@ import {AuthState} from "../model/AuthState";
   providedIn: 'root'
 })
 export class CartService {
-  private items: ProductResponseDTO[] = JSON.parse(localStorage.getItem("cardItems"+'cardItems'+this.authState.user?.id) || '[]');
+  private items: ProductResponseDTO[] = JSON.parse(localStorage.getItem("cardItems"+'cardItems') || '[]');
 
   constructor(private priceService: ProductPriceService,private authState:AuthState) {
     this.items.forEach(item => this.loadProductPrice(item));

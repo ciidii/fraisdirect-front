@@ -1,0 +1,68 @@
+<br>
+<br>
+<form [formGroup]="addressForm" (ngSubmit)="onSubmit()" class="container mt-4 p-4 border rounded shadow-sm bg-light">
+  <h3 class="mb-3">1. ADRESSE CLIENT</h3>
+  <h5 class="mb-4 text-muted">MODIFIER L'ADRESSE</h5>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="firstName" class="form-label">Prénom</label>
+      <input id="firstName" formControlName="firstName" type="text" class="form-control" placeholder="Entrez le prénom">
+    </div>
+    <div class="col-md-6">
+      <label for="lastName" class="form-label">Nom</label>
+      <input id="lastName" formControlName="lastName" type="text" class="form-control" placeholder="Entrez le nom">
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="primaryPhone" class="form-label">Téléphone mobile</label>
+      <div class="input-group">
+        <span class="input-group-text">+221</span>
+        <input id="primaryPhone" formControlName="primaryPhone" type="text" class="form-control" placeholder="Entrez le numéro de téléphone">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <label for="secondaryPhone" class="form-label">Téléphone mobile supplémentaire</label>
+      <div class="input-group">
+        <span class="input-group-text">+221</span>
+        <input id="secondaryPhone" formControlName="secondaryPhone" type="text" class="form-control" placeholder="Ajouter un numéro de téléphone additionnel">
+      </div>
+    </div>
+  </div>
+
+  <div class="mb-3">
+    <label for="address" class="form-label">Adresse</label>
+    <input id="address" formControlName="address" type="text" class="form-control" placeholder="Entrez l'adresse">
+  </div>
+
+  <div class="mb-3">
+    <label for="additionalInfo" class="form-label">Information supplémentaire</label>
+    <input id="additionalInfo" formControlName="additionalInfo" type="text" class="form-control" placeholder="Saisir des informations supplémentaires">
+  </div>
+
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="region" class="form-label">Région</label>
+      <select id="region" formControlName="region" class="form-select">
+        <option value="" disabled>Choisir une région</option>
+        <option value="Dakar">Dakar</option>
+        <!-- Ajouter d'autres options ici -->
+      </select>
+    </div>
+    <div class="col-md-6">
+      <label for="city" class="form-label">Ville</label>
+      <select id="city" formControlName="city" class="form-select">
+        <option value="" disabled>Choisir une ville</option>
+        <option value="Amitie 3">Amitie 3</option>
+        <!-- Ajouter d'autres options ici -->
+      </select>
+    </div>
+  </div>
+
+  <div class="d-flex justify-content-end">
+    <button type="button" (click)="onCancel()" class="btn btn-secondary me-2">ANNULER</button>
+    <button [routerLink]="['/customer/order-confirmation']" class="btn btn-primary">ENREGISTRER</button>
+  </div>
+</form>

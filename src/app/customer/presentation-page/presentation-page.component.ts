@@ -43,11 +43,9 @@ export class PresentationPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.authState)
     this.categoryService.getCategories().subscribe({
       next: response => {
         this.categories = response.data;
-        console.log(response.data)
       },
       error: err => {
         console.log(err);
