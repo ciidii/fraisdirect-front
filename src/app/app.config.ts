@@ -17,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     importProvidersFrom(CoreModule),
     importProvidersFrom(CustomerModule),
     importProvidersFrom(ShopkeeperModule)
+    
 
   ]
 };

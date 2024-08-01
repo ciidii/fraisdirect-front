@@ -5,6 +5,7 @@
       <table class="table table-striped">
         <thead>
         <tr>
+          <th scope="col">#</th>
           <th scope="col">Code Produit</th>
           <th scope="col">Nom du produit</th>
           <th scope="col">Description</th>
@@ -15,24 +16,57 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of products">
+        <tr *ngFor="let product of products; let i = index">
+          <td>{{ i + 1 }}</td>
           <td>{{ product.codeProduit }}</td>
-          <td>{{product.name}}</td>
+          <td>{{ product.name }}</td>
           <td>{{ product.description }}</td>
           <td>{{ product.basicPrice }}</td>
           <td>{{ product.quantity }}</td>
           <td>{{ product.subCategory }}</td>
           <td>
-            <button type="button" class="btn btn-sm btn-primary">
+            <button type="button" class="btn btn-sm btn-primary" (click)="editProduct(product)">
               <i class="bi bi-pencil"></i> Éditer
             </button>
-            <button type="button" class="btn btn-sm btn-danger ms-1">
+            <button type="button" class="btn btn-sm btn-danger ms-1" (click)="supprimerProduit(product.productID)">
               <i class="bi bi-trash"></i> Supprimer
             </button>
           </td>
         </tr>
         </tbody>
       </table>
+
+      <!-- Formulaire d'édition -->
+      <div *ngIf="selectedProduct" class="mt-4 p-4 border rounded shadow-sm bg-light">
+        <h3 class="text-center">Modifier le produit</h3>
+        <form (ngSubmit)="updateProduct()">
+          <div class="form-group mb-3">
+            <label for="name">Nom du produit</label>
+            <input type="text" id="name" class="form-control" [(ngModel)]="selectedProduct.name" name="name" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="description">Description</label>
+            <textarea id="description" class="form-control" [(ngModel)]="selectedProduct.description" name="description" required></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <label for="basicPrice">Prix de base</label>
+            <input type="number" id="basicPrice" class="form-control" [(ngModel)]="selectedProduct.basicPrice" name="basicPrice" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="quantity">Quantité</label>
+            <input type="number" id="quantity" class="form-control" [(ngModel)]="selectedProduct.quantity" name="quantity" required>
+          </div>
+          <div class="form-group mb-3">
+            <label for="subCategory">Sous-catégorie</label>
+            <input type="text" id="subCategory" class="form-control" [(ngModel)]="selectedProduct.subCategory" name="subCategory" required>
+          </div>
+          <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-success">Enregistrer</button>
+            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
+          </div>
+        </form>
+      </div>
+
       <pagination-controls (pageChange)="onPageChange($event)" [currentPage]="currentPage" [itemsPerPage]="itemsPerPage" [totalItems]="totalItems"></pagination-controls>
     </div>
   </div>

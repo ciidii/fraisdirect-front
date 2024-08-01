@@ -67,7 +67,6 @@ export class CartService {
       if (product.productPrice.priceModel === "WEIGHT") {
         productTotalPrice = (product.productPrice.basedPriceID.price * product.quantity) / product.productPrice.basedPriceID.wight;
       } else if (product.productPrice.priceModel === "QUANTITY") {
-        console.log(product.productPrice.basedPriceID.price);
         productTotalPrice = (product.productPrice.basedPriceID.price * product.quantity) / product.productPrice.basedPriceID.quantity;
       }
     }

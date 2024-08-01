@@ -88,7 +88,6 @@ export class CartComponent implements OnInit {
       };
       this.orderRequestDTO.orderDetails.push(orderDetail);
     });
-    console.log(JSON.stringify(this.orderRequestDTO));
   }
 
   protected readonly empty = empty;
