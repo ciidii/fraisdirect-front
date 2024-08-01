@@ -9,6 +9,7 @@ import {AuthState} from "../../core/model/AuthState";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
 import {OrderService} from "../../core/service/OrderService";
+import {empty} from "rxjs";
 
 @Component({
   selector: 'app-cart',
@@ -89,4 +90,6 @@ export class CartComponent implements OnInit {
     });
     console.log(JSON.stringify(this.orderRequestDTO));
   }
+
+  protected readonly empty = empty;
 }
