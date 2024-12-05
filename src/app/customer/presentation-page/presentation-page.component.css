@@ -1,0 +1,79 @@
+.container {
+  margin-top: 100px; /* Ajoutez une marge supérieure pour éviter que le contenu ne soit caché derrière la navbar */
+}
+.card {
+  margin-bottom: 10px; /* Ajoutez une marge inférieure entre les cartes */
+}
+.fixed-height {
+  height: 200px; /* Ajustez cette valeur à la hauteur désirée */
+  width: 100%;
+  object-fit: contain;
+}
+.para{
+  position: relative;
+  left: 55px;
+  top: 5px;
+  font-size: 2.3rem;
+  color: #555;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.letext
+{
+  position:relative;
+  top: 10px;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #555;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+.card-img{
+  position:relative;
+  bottom: 50px;
+}
+h1{
+  padding-left: 250px;
+}
+footer {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+footer h5 {
+  font-size: 1.25rem;
+}
+footer p, footer a {
+  font-size: 0.875rem;
+}
+footer a {
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.btn-outline-primary {
+  border-color: #007bff;
+  color: #007bff;
+}
+.btn-outline-primary:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+.btn-arrow {
+  background: none;
+  border: none;
+  font-size: 2em;
+  color: #007bff;
+  cursor: pointer;
+}
+.btn-arrow:disabled {
+  color: #c0c0c0;
+  cursor: not-allowed;
+}
+.btn-block {
+  display: block;
+  width: 100%;
+}
+

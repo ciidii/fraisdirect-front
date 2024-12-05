@@ -1,1 +1,67 @@
-<p>header works!</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/customer/']">
+      <img src="/assets/images/logofd.png" alt="Logo FraisDirect" class="logo-img">
+    </a>
+
+    <!-- Bouton de bascule pour afficher/cacher le menu sur les appareils mobiles -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Contenu du menu de navigation -->
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link nav-spacing" [routerLink]="['/customer/noservices']">Services</a>
+        </li>
+        <li *ngIf="this.authState.isShopKeeper()" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-spacing" href="#" id="gestionProduitsDropdown" role="button"
+             data-bs-toggle="dropdown" aria-expanded="false">
+            Gestion des Produits
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="gestionProduitsDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/product']">Ajouter Produit</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/gestionprod']">Liste des Produits</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/conf-product-price']">Paramétrer le prix des produits</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/price-model']">Ajouter un model de prix</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/categorie']">Ajouter categorie</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/souscategorie']">Ajouter sous-categorie</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/shopkeeper/attribute']">Ajouter attribute</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-spacing" [routerLink]="['/customer/contact']">Contacts</a>
+        </li>
+      </ul>
+
+      <!-- Champ de recherche au centre -->
+      <form class="d-flex mx-auto search-bar-form">
+        <input class="form-control me-2 search-bar" type="search" placeholder="Rechercher" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Recherche</button>
+      </form>
+
+      <!-- Icônes de profil et panier à droite -->
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle nav-spacing btn btn-outline-success profile-cart-exception"
+             href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-person icon-small"></i> Profil
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="profileDropdown">
+            <li><a class="dropdown-item" [routerLink]="['/customer/create-account']">Créer un compte</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/customer/login']">Se Connecter</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link nav-spacing btn btn-outline-success profile-cart-exception" [routerLink]="['/customer/cart']">
+            <span class="badge badge-pill badge-light">{{ cartService.getTotalItems() }}</span>
+            <i class="bi bi-cart icon-small"></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

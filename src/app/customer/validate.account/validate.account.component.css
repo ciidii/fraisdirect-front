@@ -1,0 +1,44 @@
+/* verify-code.component.css */
+.verify-code-container {
+  max-width: 400px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+/* verify-code.component.css */
+.input-box {
+  width: 50px;
+  height: 50px;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+
+.verify-code-container h2 {
+  text-align: center;
+}
+
+.verify-code-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.verify-code-container .form-control {
+  text-align: center;
+  width: 3rem;
+  margin: 0 0.25rem;
+}
+
+.verify-code-container .btn {
+  margin-top: 20px;
+}
+
+.verify-code-container .error {
+  color: #ff0000;
+  margin-top: 8px;
+  text-align: center;
+}

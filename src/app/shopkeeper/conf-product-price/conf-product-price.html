@@ -1,0 +1,39 @@
+<br>
+<div class="container mt-5">
+  <h2 class="mb-4">Configuration par Prix</h2>
+  <form [formGroup]="formGroup" (ngSubmit)="confPrice()">
+    <!-- Sélection du produit -->
+    <div class="mb-3">
+      <label for="produit" class="form-label">Produit</label>
+      <select class="form-select" id="produit" formControlName="product">
+        <option *ngFor="let product of notSalableProduct" value="{{product.productID}}">{{product.name}}</option>
+      </select>
+    </div>
+    <!-- Boutons radio pour Price Model -->
+    <fieldset class="mb-3">
+      <legend class="col-form-label pt-0">Modèle de Prix</legend>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="priceModel" id="priceModel1" value="WEIGHT" checked>
+        <label (click)="getWeightPrices()" class="form-check-label" for="priceModel1">Prix par Quantité</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" formControlName="priceModel" id="priceModel2" value="QUANTITY">
+        <label (click)="getQuantityPrices()" class="form-check-label" for="priceModel2">Prix par Poids</label>
+      </div>
+    </fieldset>
+    <!-- Liste déroulante pour Based Price ID -->
+    <div class="mb-3">
+      <label for="basedPriceID" class="form-label">Based Price ID</label>
+      <select class="form-select" id="basedPriceID" formControlName="basedPriceID">
+        <option *ngFor="let lop of listOfPrices" value="{{lop.id}}">{{lop.label}}</option>
+      </select>
+    </div>
+    <!-- Case à cocher pour Status -->
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" id="status" formControlName="status">
+      <label class="form-check-label" (click)="setStatus()" for="status">Définir comme prix actif</label>
+    </div>
+    <!-- Bouton de soumission -->
+    <button [disabled]="formGroup.invalid" type="submit" class="btn btn-success">Valider</button>
+  </form>
+</div>

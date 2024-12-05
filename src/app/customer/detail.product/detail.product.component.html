@@ -1,0 +1,32 @@
+<br>
+<br><br>
+<br>
+<body>
+<br>
+<br>
+<div class="container mt-5">
+  <div class="row">
+    <!-- Image du produit -->
+    <div class="col-md-6">
+      <img [src]="utilsService.formatImage(product.images[0])" class="img-fluid" alt="Pomme">
+    </div>
+    <!-- Détails du produit -->
+    <div class="col-md-6">
+      <h1 class="display-4">{{product.name}}</h1>
+      <p class="lead">{{product.description}}</p>
+      <h3 class="text-success"><strong>Prix : {{ product.productPrice.priceModel == "WEIGHT" ? (product.productPrice.basedPriceID.wight  + ' kg /'+product.productPrice.basedPriceID.price +'F CFA') : (product.productPrice.basedPriceID.price + ' F CFA /'+product.productPrice.basedPriceID.quantity+' unité') }}</strong></h3>
+      <hr>
+      <p *ngFor="let attr of product.subCategoryResponseDTO.attributes" class="card-text"><strong>{{attr.attributeName}} :</strong> {{attr.attributeDescription}}</p>
+      <hr>
+      <h6>Sous-Catégorie: {{product.subCategoryResponseDTO.nameSubCategory}}</h6>
+      <p>{{product.subCategoryResponseDTO.descriptionSubCategory}}</p>
+      <hr>
+      <h6>Catégorie: {{product.subCategoryResponseDTO.category.nameCategory}}</h6>
+      <p>{{product.subCategoryResponseDTO.category.descriptionCategory}}</p>
+      <button (click)="addCart(product)" class="btn btn-outline-success d-flex align-items-center">
+        <i class="bi bi-cart-plus me-2"></i>
+      </button>
+    </div>
+  </div>
+</div>
+

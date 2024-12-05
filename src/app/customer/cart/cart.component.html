@@ -1,0 +1,40 @@
+<br>
+<br>
+<br>
+<div class="container mt-5">
+  <h2 class="mb-4 h1 text-center">Votre panier</h2>
+  <div *ngFor="let product of cartService.getItems()" class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img [src]="utilsService.formatImage(product.images[0])" class="card-img" alt="{{ product.name }}">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">
+            <strong>Prix:</strong>
+            {{ product.productPrice?.priceModel == "WEIGHT"
+            ? (product.productPrice?.basedPriceID?.weight + ' Kg /' + product.productPrice?.basedPriceID?.price + ' F CFA')
+            : (product.productPrice?.basedPriceID?.price + ' F CFA /' + product.productPrice?.basedPriceID?.quantity + ' unité') }}
+          </p>
+          <p class="card-text">
+            <strong>Total prix:</strong> {{ computeProductPrice(product) }}
+          </p>
+          <p class="card-text">
+            <strong>{{ product.productPrice?.priceModel == "WEIGHT" ? ' Kg /' : ' unité' }}:</strong> {{ product.quantity }}
+          </p>
+          <div class="btn-group mb-2" role="group">
+            <button (click)=" onDecreaseQuantity(product.productID)" class="btn btn-warning m-1">-</button>
+            <button (click)="onIncreaseQuantity(product.productID)" class="btn btn-success m-1">+</button>
+            <button (click)="onRemoveFromCart(product)" class="btn btn-danger m-1"><i class="bi bi-trash3"></i></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h5 class="mt-4">
+    <strong>Total prix:</strong> {{ cartService.computeTotalCart() }} F CFA
+  </h5>
+  <button [disabled]="!cartService.getItems().length" [routerLink]="['/customer/address']" class="btn btn-success mt-3">Commandez</button>
+</div>

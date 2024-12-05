@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form (ngSubmit)="onSubmit()" [formGroup]="productForm" class="form-container">
+        <div class="mb-3">
+          <label for="codeProduct" class="form-label">Code du Produit</label>
+          <input type="text" id="codeProduct" class="form-control" formControlName="codeProduct">
+          <div *ngIf="productForm.get('codeProduct')!.invalid && productForm.get('codeProduct')!.touched"
+               class="text-danger">
+            Le code du produit doit comporter exactement 5 caractères.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="codeProduct" class="form-label">Nom du Produit</label>
+          <input type="text" id="nameProduct" class="form-control" formControlName="nameProduct">
+          <div *ngIf="productForm.get('nameProduct')!.invalid && productForm.get('nameProduct')!.touched"
+               class="text-danger">
+            Le code du produit doit comporter exactement 5 caractères.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="description" class="form-label">Description</label>
+          <input type="text" id="description" class="form-control" formControlName="description">
+        </div>
+        <div class="mb-3">
+          <label for="basicPrice" class="form-label">Prix de Base</label>
+          <input type="number" id="basicPrice" class="form-control" formControlName="basicPrice">
+          <div *ngIf="productForm.get('basicPrice')!.invalid && productForm.get('basicPrice')!.touched"
+               class="text-danger">
+            Le prix de base est requis.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="quantity" class="form-label">Quantité</label>
+          <input type="number" id="quantity" class="form-control" formControlName="quantity">
+          <div *ngIf="productForm.get('quantity')!.invalid && productForm.get('quantity')!.touched" class="text-danger">
+            La quantité est requise.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="subCategory" class="form-label">Sous-catégorie</label>
+          <select class="form-select" id="subCategory" formControlName="subCategory">
+            <option value="" style="color: #999;" selected disabled>Sélectionnez la catégorie</option>
+            <option *ngFor="let categorie of subCategories" [value]="categorie.subCategoryID">{{ categorie.nameSubCategory }}</option>
+          </select>
+          <div *ngIf="productForm.get('subCategory')!.invalid && productForm.get('subCategory')!.touched"
+               class="text-danger">
+            La sous-catégorie est requise.
+          </div>
+        </div>
+        <div class="mb-3">
+          <label for="images" class="form-label">Images du Produit</label>
+          <input type="file" id="images" class="form-control-file" (change)="onFileChange($event)" multiple>
+          <div *ngIf="productForm.get('images')!.invalid && productForm.get('images')!.touched" class="text-danger">
+            Les images du produit sont requises.
+          </div>
+        </div>
+        <button type="submit" class="btn btn-success">Ajouter Produit</button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<br>
+<br>
+<br>
+<form [formGroup]="subCategoryForm" (ngSubmit)="onSubmit()" class="container mt-4">
+  <div class="mb-3">
+    <label for="nameSubCategory" class="form-label">Nom du produit</label>
+    <input type="text" class="form-control" id="nameSubCategory" formControlName="nameSubCategory" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="descriptionSubCategory" class="form-label">Description</label>
+    <input type="text" class="form-control" id="descriptionSubCategory" formControlName="descriptionSubCategory" required>
+  </div>
+
+  <div class="mb-3">
+    <label for="categoryID" class="form-label">Category</label>
+    <select class="form-select" id="categoryID" formControlName="categoryID" required>
+      <option selected disabled>Selectionnez la catégorie</option>
+      <option *ngFor="let category of categories" [ngValue]="category.categoryID">
+        {{ category.nameCategory }}
+      </option>
+    </select>
+  </div>
+
+  <div formArrayName="attributes" class="mb-3">
+    <label>Attributes</label>
+    <div *ngFor="let attribute of additionalAttributes.controls; let i = index" [formGroupName]="i" class="border p-2 mb-2">
+      <div class="mb-3">
+        <label for="attributeName" class="form-label">Attribute Name</label>
+        <input type="text" class="form-control" id="attributeName" formControlName="attributeName" />
+      </div>
+      <div class="mb-3">
+        <label for="attributeDescription" class="form-label">Attribute Description</label>
+        <input type="text" class="form-control" id="attributeDescription" formControlName="attributeDescription" />
+      </div>
+      <button type="button" class="btn btn-danger" (click)="removeAttribute(i)">Supprimer</button>
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-primary mb-3" (click)="addAttribute()">Ajouté un attribute</button>
+
+  <!--
+  <div class="mb-3">
+    <label for="attributeID" class="form-label">Attribute ID</label>
+    <select class="form-select" id="attributeID" formControlName="attributeID" required>
+      <option selected disabled>Selectionnez une attribute</option>
+      <option *ngFor="let attribute of attributes" [ngValue]="attribute.attributeID">
+        {{ attribute.attributeName }}
+      </option>
+    </select>
+  </div>
+  -->
+
+<div class="">
+  <button type="submit" class="btn btn-success">Ajoute la sous-catégory</button>
+</div>
+</form>
+
+<p>{{subCategoryForm.value | json}}</p>
